@@ -1,0 +1,5 @@
+import "Souru.Gibberish.Options.OptionsWindow.TimerEdit.Items"
+import "Souru.Gibberish.Options.OptionsWindow.TimerEdit.CollectionList"
+import "Souru.Gibberish.Options.OptionsWindow.TimerEdit.CollectionOverView"
+import "Souru.Gibberish.Options.OptionsWindow.TimerEdit.TimerSettings"
+import "Souru.Gibberish.Options.OptionsWindow.TimerEdit.Window"

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Plugin> 
+	<Information>
+		<Name>GibberishReloader</Name>
+		<Author>Souru</Author>
+		<Version>1.0.0</Version>
+		<Description>...</Description>
+	</Information>
+	<Package>Souru.Gibberish.GibberishReloader</Package>
+	<Configuration Apartment="GibberishReloader" />
+</Plugin>

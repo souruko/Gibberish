@@ -1,0 +1,19 @@
+
+Fixes
+
+    - iconsize in timerselection is broken after saving timer changes
+    - moving window for icon windows/listbox includes spacing
+    - window window-type has problem with - in token > check to arms
+    - stacking permanent(floor) effects still not working properly
+
+New Features
+
+    - tooltips
+    - target entity for group effects
+    - add onclick entitys to items
+    - changing groups to a directory system
+    - an option for external images
+    - class resource as trigger
+    - target morale as trigger
+    - change countdown to counter
+    - a way to add a trigger as remover for another timer
