@@ -1,2 +1,2 @@
-import "Souru.Gibberish.Options.Import.Functions"
-import "Souru.Gibberish.Options.Import.Window"
+import "Gibberish.Options.Import.Functions"
+import "Gibberish.Options.Import.Window"

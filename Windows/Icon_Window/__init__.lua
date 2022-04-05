@@ -1,1 +1,1 @@
-import "Souru.Gibberish.Windows.Icon_Window.Window"
+import "Gibberish.Windows.Icon_Window.Window"

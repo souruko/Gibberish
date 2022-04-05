@@ -6,6 +6,6 @@
 		<Version>2.6.0</Version>
 		<Description>/gibberish [options] [reload] [reset] [collection] [move]</Description>
 	</Information>
-	<Package>Souru.Gibberish.Main</Package>
+	<Package>Gibberish.Main</Package>
 	<Configuration Apartment="Gibberish" />
 </Plugin>

@@ -1,1 +1,1 @@
-import "Souru.Gibberish.Windows.Bar_ListBox.Window"
+import "Gibberish.Windows.Bar_ListBox.Window"

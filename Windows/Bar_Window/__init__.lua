@@ -1,1 +1,1 @@
-import "Souru.Gibberish.Windows.Bar_Window.Window"
+import "Gibberish.Windows.Bar_Window.Window"

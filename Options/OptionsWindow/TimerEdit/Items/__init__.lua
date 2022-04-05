@@ -1,4 +1,4 @@
-import "Souru.Gibberish.Options.OptionsWindow.TimerEdit.Items.EffectControl"
-import "Souru.Gibberish.Options.OptionsWindow.TimerEdit.Items.ChatControl"
-import "Souru.Gibberish.Options.OptionsWindow.TimerEdit.Items.SkillControl"
-import "Souru.Gibberish.Options.OptionsWindow.TimerEdit.Items.TimerControl"
+import "Gibberish.Options.OptionsWindow.TimerEdit.Items.EffectControl"
+import "Gibberish.Options.OptionsWindow.TimerEdit.Items.ChatControl"
+import "Gibberish.Options.OptionsWindow.TimerEdit.Items.SkillControl"
+import "Gibberish.Options.OptionsWindow.TimerEdit.Items.TimerControl"

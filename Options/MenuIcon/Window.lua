@@ -173,16 +173,16 @@ end
 function Window:SetIconFromTrackInformation()
 
     if savedata.track_target_effects == true and savedata.track_group_effects == true then
-        self:SetBackground("Souru/Gibberish/Resources/g_blau_gelb.tga")
+        self:SetBackground("Gibberish/Resources/g_blau_gelb.tga")
 
     elseif savedata.track_group_effects == true then
-        self:SetBackground("Souru/Gibberish/Resources/g_blau.tga")
+        self:SetBackground("Gibberish/Resources/g_blau.tga")
 
     elseif savedata.track_target_effects == true then
-        self:SetBackground("Souru/Gibberish/Resources/g_gelb.tga")
+        self:SetBackground("Gibberish/Resources/g_gelb.tga")
 
     else
-        self:SetBackground("Souru/Gibberish/Resources/g.tga")
+        self:SetBackground("Gibberish/Resources/g.tga")
 
     end
 

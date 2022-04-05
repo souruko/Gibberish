@@ -1,5 +1,5 @@
 -- importing item class
-import "Souru.Gibberish.Windows.Count_Down.Item"
+import "Gibberish.Windows.Count_Down.Item"
 
 Window = class( Turbine.UI.Window )
 

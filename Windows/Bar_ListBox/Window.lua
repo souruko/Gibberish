@@ -1,5 +1,5 @@
 -- importing item class
-import "Souru.Gibberish.Windows.Bar_ListBox.Item"
+import "Gibberish.Windows.Bar_ListBox.Item"
 
 Window = class( Turbine.UI.Window )
 

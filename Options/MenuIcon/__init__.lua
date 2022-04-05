@@ -1,1 +1,1 @@
-import "Souru.Gibberish.Options.MenuIcon.Window"
+import "Gibberish.Options.MenuIcon.Window"

@@ -1,1 +1,1 @@
-import "Souru.Gibberish.Windows.Count_Down.Window"
+import "Gibberish.Windows.Count_Down.Window"

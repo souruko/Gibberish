@@ -1,2 +1,2 @@
-import "Souru.Gibberish.Options.OptionsWindow.TimerSelection.Item"
-import "Souru.Gibberish.Options.OptionsWindow.TimerSelection.Window"
+import "Gibberish.Options.OptionsWindow.TimerSelection.Item"
+import "Gibberish.Options.OptionsWindow.TimerSelection.Window"

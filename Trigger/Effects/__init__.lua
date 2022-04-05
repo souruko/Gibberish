@@ -7,7 +7,7 @@ function checkAllActivEffectsForCollection()
 end
 
 
-import "Souru.Gibberish.Trigger.Effects.Group"
-import "Souru.Gibberish.Trigger.Effects.Target"
-import "Souru.Gibberish.Trigger.Effects.Self"
+import "Gibberish.Trigger.Effects.Group"
+import "Gibberish.Trigger.Effects.Target"
+import "Gibberish.Trigger.Effects.Self"
 

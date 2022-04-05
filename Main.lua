@@ -4,34 +4,32 @@ import "Turbine.UI"
 import "Turbine.UI.Lotro"
 
 -- collection of global variables
-import "Souru.Gibberish.Global"
+import "Gibberish.Global"
 
 
 -- importing libary with useful help functions
-import "Souru.Gibberish.Utils"
+import "Gibberish.Utils"
 
 
 -- importing libary with functions for handeling data
-import "Souru.Gibberish.DataFunctions"
+import "Gibberish.DataFunctions"
 
 
 
 -- importing all window typ classes
-import "Souru.Gibberish.Windows"
+import "Gibberish.Windows"
 
 
 -- load all options items
-import "Souru.Gibberish.Options"
+import "Gibberish.Options"
 
 
 -- starting up all the trigger tracking
-import "Souru.Gibberish.Trigger"
+import "Gibberish.Trigger"
 
 
 -- get them juciy savefiles :3 and some saving stuff
-import "Souru.Gibberish.Load_Save"
-
-
+import "Gibberish.Load_Save"
 
 
 

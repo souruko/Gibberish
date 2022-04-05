@@ -7,8 +7,8 @@
   <InfoUrl>https://www.lotrointerface.com/downloads/info1143-Gibberish.html</InfoUrl>
   <DownloadUrl>https://www.lotrointerface.com/downloads/download1143-Gibberish</DownloadUrl>
   <Descriptors>
-    <descriptor>Souru\Gibberish.plugin</descriptor>
-    <descriptor>Souru\GibberishReloader.plugin</descriptor>
+    <descriptor>Gibberish.plugin</descriptor>
+    <descriptor>GibberishReloader.plugin</descriptor>
   </Descriptors>
   <Dependencies />
 </PluginConfig>
