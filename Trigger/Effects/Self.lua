@@ -53,7 +53,6 @@ function checkSelfEffect(effect)
 
                         windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Self][timer_index])
 
-
                     end
 
                 else
@@ -125,12 +124,13 @@ function checkRemoveSelfEffect(effect)
 
                         if string.find(name, timer_data.token) then
 
-                            local eid = ""
+                            local key
                             if timer_data.unique == false then
-                                eid = effect:GetID().."id"
+                                key = "1_"..window_index.."w_"..timer_index.."t_"..effect:GetID().."id"
+                            else
+                                key =  "1_"..window_index.."w_"..timer_index.."t"
                             end
 
-                            local key =  "1_"..window_index.."w_"..timer_index.."t"
                             windows[window_index]:Remove(key)
 
                         end
@@ -141,12 +141,13 @@ function checkRemoveSelfEffect(effect)
 
                             if timer_data.icon == nil or timer_data.icon == icon then
 
-                                local eid = ""
+                                local key
                                 if timer_data.unique == false then
-                                    eid = effect:GetID().."id"
+                                    key = "1_"..window_index.."w_"..timer_index.."t_"..effect:GetID().."id"
+                                else
+                                    key =  "1_"..window_index.."w_"..timer_index.."t"
                                 end
 
-                                local key =  "1_"..window_index.."w_"..timer_index.."t"
                                 windows[window_index]:Remove(key)
 
                             end
@@ -193,13 +194,6 @@ function AddSelfEffectCallbacks()
         local name = args.Effect:GetName()
         local icon = args.Effect:GetIcon()
 
-        for i=1, effects:GetCount(), 1 do
-            local effect = effects:Get(i)
-            if effect:GetName() == name and effect:GetIcon() == icon then
-                return
-            end
-        end
-
         checkRemoveSelfEffect(args.Effect)
 
     end
@@ -210,7 +204,7 @@ function AddSelfEffectCallbacks()
 
         checkSelfEffect(effect)
         checkGroupEffect(effect, LOCALPLAYER)
-
+        
         Options.Collection.checkEffectForCollection(effect)
 
     end
