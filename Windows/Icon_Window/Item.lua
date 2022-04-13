@@ -1,11 +1,11 @@
 Item = class( Turbine.UI.Window )
 
-function Item:Constructor(parent, data)
+function Item:Constructor(parent, data, key)
 	Turbine.UI.Window.Constructor( self )
 
     self.parent = parent
-    self.token = string.gsub(data.token , "-", "")
-    self.key = ""
+    self.token = data.token
+    self.key = key
     self.data = data
 
     self.start_time = 0

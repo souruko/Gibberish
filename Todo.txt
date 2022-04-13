@@ -2,8 +2,6 @@
 Fixes
 
     - iconsize in timerselection is broken after saving timer changes
-    - moving window for icon windows/listbox includes spacing
-    - window window-type has problem with - in token > check to arms
     - make export-strings "nicer"
 
 New Features

@@ -115,13 +115,11 @@ end
 
 function Window:Add(token, key, start_time, duration, icon, text, timer_data)
 
-    token = string.gsub(token, "-", "")
-
     for i, control in ipairs(self.controls) do
 
-        if string.find(token, control.token) then
+        if string.find(key, control.key) then
 
-            control:UpdateParameter(start_time, duration, icon, text, key)
+            control:UpdateParameter(start_time, duration, icon, text, control.key)
             control:SetActiv(true)
 
         end
@@ -134,7 +132,7 @@ function Window:Remove(key)
 
     for index, control in ipairs(self.controls) do
 
-        if string.find(control.key, key) then
+        if string.find(key, control.key) then
 
             control:ShutDown()
 
@@ -186,7 +184,8 @@ function Window:Fill()
             if i ~= TRIGGER_TYPE.Skill or Trigger.checkIfSkillIsActiv(timer_data.token) then
 
                 local index = table.getn(self.controls) + 1
-                self.controls[index] = Item(self, timer_data)
+                local key = i.."_"..self.index.."w_"..j.."t"
+                self.controls[index] = Item(self, timer_data, key)
                 self.list:AddItem(self.controls[index])
 
             end
