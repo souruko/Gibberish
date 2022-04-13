@@ -128,6 +128,18 @@ function checkRemoveSelfEffect(effect)
                             if timer_data.unique == false then
                                 key = "1_"..window_index.."w_"..timer_index.."t_"..effect:GetID().."id"
                             else
+                                local effects = LOCALPLAYER:GetEffects()
+
+                                for index=1, effects:GetCount(), 1 do
+
+                                    local e = effects:Get(index)
+
+                                    if e:GetName() == name and e:GetIcon() == icon then
+                                        return
+                                    end
+     
+                                end
+
                                 key =  "1_"..window_index.."w_"..timer_index.."t"
                             end
 
@@ -145,6 +157,19 @@ function checkRemoveSelfEffect(effect)
                                 if timer_data.unique == false then
                                     key = "1_"..window_index.."w_"..timer_index.."t_"..effect:GetID().."id"
                                 else
+                                    local effects = LOCALPLAYER:GetEffects()
+
+                                for index=1, effects:GetCount(), 1 do
+
+                                    local e = effects:Get(index)
+
+                                    if e:GetName() == name and e:GetIcon() == icon then
+                                       Turbine.Shell.WriteLine(name)
+                                        return
+                                    end
+     
+                                end
+
                                     key =  "1_"..window_index.."w_"..timer_index.."t"
                                 end
 
@@ -204,7 +229,6 @@ function AddSelfEffectCallbacks()
 
         checkSelfEffect(effect)
         checkGroupEffect(effect, LOCALPLAYER)
-        
         Options.Collection.checkEffectForCollection(effect)
 
     end
