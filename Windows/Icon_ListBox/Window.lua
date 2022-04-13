@@ -131,8 +131,8 @@ function Window:DataChanged()
     if savedata[self.index].orientation == ORIENTATION.Horizontal then
 
         self.list:SetOrientation( Turbine.UI.Orientation.Vertical )
-        local width = savedata[self.index].width + savedata[self.index].spacing
-        local height = savedata[self.index].height + savedata[self.index].spacing
+        local width = savedata[self.index].width
+        local height = savedata[self.index].height
         local move_frame = 1
 
         self:SetSize(width, height)
@@ -146,8 +146,8 @@ function Window:DataChanged()
     else
 
         self.list:SetOrientation( Turbine.UI.Orientation.Horizontal ) 
-        local width = savedata[self.index].height + savedata[self.index].spacing
-        local height = savedata[self.index].width+ savedata[self.index].spacing
+        local width = savedata[self.index].height
+        local height = savedata[self.index].width
         local move_frame = 1
     
         self:SetSize(width, height)

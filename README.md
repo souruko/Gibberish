@@ -10,6 +10,10 @@ Lotro LUA Plugin for all the timers
 
 # ChangeLog
 
+2.6.1
+- Fixed stacked effect issue
+- Fixed the issue where moving icons had the wrong size
+
 2.6.0
 
 - Fixed reload breaking looping timers
