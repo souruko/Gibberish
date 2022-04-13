@@ -7,12 +7,14 @@ Fixes
 New Features
 
     - tooltips
-    - target entity for group effects
+    - target entity
+    - change "Let the plugin decide" to ""target name"
     - add onclick entitys to items
-    - changing groups to a directory system
+    - changing groups to a directory system (only needs to option to add groups into other groups)
     - an option for external images
     - class resource as trigger
     - target morale as trigger
     - change countdown to counter
+    - add "increment" attribute to timer to change the counting direction
     - a way to add a trigger as remover for another timer
     - reset individuell windows or even timer per chat comand
