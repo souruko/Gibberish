@@ -184,8 +184,15 @@ function Item:Update()
     end
 
     if time_left < 99999 then
-		self.timer_label:SetText(Utils.SecondsToClock(time_left, self.number_format))
 
+        if self.data.inkrement == true then
+            self.timer_label:SetText(Utils.SecondsToClock( (self.duration - time_left), self.number_format))
+
+        else
+            self.timer_label:SetText(Utils.SecondsToClock(time_left, self.number_format))
+
+        end
+        
         if self.data.use_threshold == true then
 
             if time_left <= self.data.threshold then

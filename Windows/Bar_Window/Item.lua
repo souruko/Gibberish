@@ -232,12 +232,24 @@ function Item:Update()
     end
 
     if time_left < 99999 then
-		self.timer_label:SetText(Utils.SecondsToClock(time_left, self.number_format))
 
-        if self.orientation then
-		    self.bar:SetWidth(time_left/self.duration*self.max_bar)
+        if self.data.inkrement == true then
+            self.timer_label:SetText(Utils.SecondsToClock( (self.duration - time_left), self.number_format))
+
+            if self.orientation then
+                self.bar:SetWidth((self.duration - time_left)/self.duration*self.max_bar)
+            else
+                self.bar:SetHeight((self.duration - time_left)/self.duration*self.max_bar)
+            end
+
         else
-            self.bar:SetHeight(time_left/self.duration*self.max_bar)
+            self.timer_label:SetText(Utils.SecondsToClock(time_left, self.number_format))
+
+            if self.orientation then
+                self.bar:SetWidth(time_left/self.duration*self.max_bar)
+            else
+                self.bar:SetHeight(time_left/self.duration*self.max_bar)
+            end
         end
 
         if self.data.use_threshold == true then
