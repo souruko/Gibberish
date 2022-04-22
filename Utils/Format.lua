@@ -279,3 +279,13 @@ findfont = function(number)
     end
 end
 
+local size_item = Turbine.UI.Control()
+-- returning image size
+function GetImageSize(image)
+
+	size_item:SetBackground(image)
+	size_item:SetStretchMode(2)
+
+	return size_item:GetSize()
+    
+end

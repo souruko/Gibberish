@@ -67,6 +67,7 @@ function DeleteWindow(index)
     local max_index = table.getn(savedata)
 
     if savedata[index].group ~= nil then
+        local id = savedata[index].group
         savedata[index].group = nil
         UpdateGroupLoadStatus(id)
     end

@@ -176,7 +176,7 @@ function Item:ParameterChanged()
     if self.icon == nil then
         self.icon_control:SetBackColor(Utils.ColorFix(savedata[self.parent.index].back_color))
     else
-        self.icon_control:SetSize(32,32)
+        self.icon_control:SetSize(Utils.GetImageSize(self.icon))
         self.icon_control:SetStretchMode(1)
         self.icon_control:SetBackground(self.icon)
         self.icon_control:SetSize(savedata[self.parent.index].height, savedata[self.parent.index].height)

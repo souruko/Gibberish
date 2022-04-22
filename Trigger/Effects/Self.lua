@@ -164,7 +164,6 @@ function checkRemoveSelfEffect(effect)
                                     local e = effects:Get(index)
 
                                     if e:GetName() == name and e:GetIcon() == icon then
-                                       Turbine.Shell.WriteLine(name)
                                         return
                                     end
      
