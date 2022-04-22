@@ -46,68 +46,13 @@ function checkTargetEffect(effect, target)
 
                     if string.find(name, timer_data.token) then -- check if token is found within the name
 
-                        local key
-                        if timer_data.unique == true then
-                            key = "2_"..window_index.."w_"..timer_index.."t_"..target:GetName().."p"
-                        else
-                            key = "2_"..window_index.."w_"..timer_index.."t_"..target:GetName().."p_"..effect:GetID().."id"
-                        end
-
-                        local start_time = effect:GetStartTime()
-                        
-                        local duration
-                        if timer_data.custom_timer == true then
-                            duration = timer_data.timer
-                        else
-                            duration = effect:GetDuration()
-                        end
-
-                        local text = ""
-                        local text_modifier = timer_data.text_modifier
-                        if text_modifier == TEXTMODIFIER.Let_the_plugin_decide then
-
-                            local has_number = false
-                            local start_tier, end_tier = string.find(name, "%d+") -- check if name has some sort of number / tier
-                            if start_tier ~= nil then
-                                text = string.sub(name, start_tier, end_tier) 
-                                has_number = true
-                            end
-                            
-                            if window_data.type == WINDOW_TYPE.Bar_ListBox or window_data.type == WINDOW_TYPE.Bar_Window then -- add name for bars
-
-                                if has_number == true then
-                                    text = text .. " - "
-                                
-                                end
-
-                                text = text .. target:GetName()
-
-                            end
-
-                        elseif text_modifier == TEXTMODIFIER.Token then
-                            text = timer_data.token
-
-                        elseif text_modifier == TEXTMODIFIER.Custom_Text then
-                            text = timer_data.text
-
-                        end
-
-                        windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Target][timer_index])
-
-
-                    end
-
-                else
-
-                    if name == timer_data.token then -- checks if name exactly the token
-
-                        if timer_data.icon == nil or timer_data.icon == icon then -- if icon is in timer_data then it checks for it
+                        if Utils.CheckTargetNames(target:GetName(), timer_data.target_list)  then
 
                             local key
                             if timer_data.unique == true then
-                                key = window_index.."w_"..timer_index.."t"
+                                key = "2_"..window_index.."w_"..timer_index.."t_"..target:GetName().."p"
                             else
-                                key = window_index.."w_"..timer_index.."t_"..effect:GetID().."id"
+                                key = "2_"..window_index.."w_"..timer_index.."t_"..target:GetName().."p_"..effect:GetID().."id"
                             end
 
                             local start_time = effect:GetStartTime()
@@ -122,7 +67,24 @@ function checkTargetEffect(effect, target)
                             local text = ""
                             local text_modifier = timer_data.text_modifier
                             if text_modifier == TEXTMODIFIER.Let_the_plugin_decide then
-                                text = target:GetName()
+
+                                local has_number = false
+                                local start_tier, end_tier = string.find(name, "%d+") -- check if name has some sort of number / tier
+                                if start_tier ~= nil then
+                                    text = string.sub(name, start_tier, end_tier) 
+                                    has_number = true
+                                end
+                                
+                                if window_data.type == WINDOW_TYPE.Bar_ListBox or window_data.type == WINDOW_TYPE.Bar_Window then -- add name for bars
+
+                                    if has_number == true then
+                                        text = text .. " - "
+                                    
+                                    end
+
+                                    text = text .. target:GetName()
+
+                                end
 
                             elseif text_modifier == TEXTMODIFIER.Token then
                                 text = timer_data.token
@@ -132,7 +94,53 @@ function checkTargetEffect(effect, target)
 
                             end
 
-                            windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Target][timer_index], true)
+                            windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Target][timer_index])
+
+
+                        end
+
+                    end
+
+                else
+
+                    if name == timer_data.token then -- checks if name exactly the token
+
+                        if timer_data.icon == nil or timer_data.icon == icon then -- if icon is in timer_data then it checks for it
+
+                            if Utils.CheckTargetNames(target:GetName(), timer_data.target_list)  then
+
+                                local key
+                                if timer_data.unique == true then
+                                    key = window_index.."w_"..timer_index.."t"
+                                else
+                                    key = window_index.."w_"..timer_index.."t_"..effect:GetID().."id"
+                                end
+
+                                local start_time = effect:GetStartTime()
+                                
+                                local duration
+                                if timer_data.custom_timer == true then
+                                    duration = timer_data.timer
+                                else
+                                    duration = effect:GetDuration()
+                                end
+
+                                local text = ""
+                                local text_modifier = timer_data.text_modifier
+                                if text_modifier == TEXTMODIFIER.Let_the_plugin_decide then
+                                    text = target:GetName()
+
+                                elseif text_modifier == TEXTMODIFIER.Token then
+                                    text = timer_data.token
+
+                                elseif text_modifier == TEXTMODIFIER.Custom_Text then
+                                    text = timer_data.text
+
+                                end
+
+                                windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Target][timer_index], true)
+
+                            end
 
                         end
 

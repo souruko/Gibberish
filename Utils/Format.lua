@@ -317,6 +317,29 @@ function TargetStringToList(string)
         end
     end
 
+    if table.getn(return_list) == 0 then
+        return nil
+    end
+
     return return_list
 
+end
+
+-- check if targetname matches list
+function CheckTargetNames(name, list)
+
+    if list == nil then
+        return true
+    end
+
+    for key, value in pairs(list) do
+
+        if value == name then
+            return true
+        end
+        
+    end
+
+    return false
+    
 end

@@ -51,6 +51,11 @@ function ChatTriggerFound(message, chatType, window_index, timer_index)
         if chatType == Turbine.ChatType.PlayerCombat or chatType == Turbine.ChatType.EnemyCombat then
             text, target = GetTargetNameFromCombatChat(message, chatType)
 
+            if Utils.CheckTargetNames(target, savedata[window_index][TRIGGER_TYPE.Chat][timer_index].target_list) == false  then
+                return
+            end 
+
+
             if savedata[window_index].type == WINDOW_TYPE.Bar_ListBox or savedata[window_index].type == WINDOW_TYPE.Bar_Window then -- add name for bars
 
                 if text ~= "" then
