@@ -14,6 +14,9 @@ Lotro LUA Plugin for all the timers
 - Fixed stacked effect issue
 - Fixed the issue where moving icons had the wrong size
 - Fixed window window-type had a problem with "-" in tokens
+- Added Inkrement to change the counting direction
+- Added Use Target Entity to Bind Clickable entitys to timers
+- Added List of Targets to limit timers with targets to specific targets
 
 
 2.6.0
