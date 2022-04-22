@@ -306,16 +306,16 @@ function TimerSettings:Build()
     self.description_lb:SetText(L.description)
 
     self.description_tb = Turbine.UI.Lotro.TextBox()
-    self.description_tb:SetSize(TIMERSETTINGS_WIDTH - 2*SPACER - 100 , 32)
+    self.description_tb:SetSize(TIMERSETTINGS_WIDTH - 2*SPACER - 100 , 74)
     self.description_tb:SetPosition(SPACER + 100, row*row_height)
     self.description_tb:SetParent(self.background)
-    self.description_tb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
+    self.description_tb:SetTextAlignment(Turbine.UI.ContentAlignment.TopLeft)
     self.description_tb:SetFont(OPTIONS_FONT)
     self.description_tb.TextChanged = function()
         self.description_lb:SetForeColor(Turbine.UI.Color.Orange)
     end
 
-    row = row + 2
+    row = row + 4
 
     self.token_lb = Turbine.UI.Label()
     self.token_lb:SetParent(self.background)
@@ -327,16 +327,16 @@ function TimerSettings:Build()
     self.token_lb:SetText(L.token)
 
     self.token_tb = Turbine.UI.Lotro.TextBox()
-    self.token_tb:SetSize(TIMERSETTINGS_WIDTH - 2*SPACER - 100 , 32)
+    self.token_tb:SetSize(TIMERSETTINGS_WIDTH - 2*SPACER - 100 , 74)
     self.token_tb:SetPosition(SPACER + 100, row*row_height)
     self.token_tb:SetParent(self.background)
-    self.token_tb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
+    self.token_tb:SetTextAlignment(Turbine.UI.ContentAlignment.TopLeft)
     self.token_tb:SetFont(OPTIONS_FONT)
     self.token_tb.TextChanged = function()
         self.token_lb:SetForeColor(Turbine.UI.Color.Orange)
     end
 
-    row = row + 2
+    row = row + 4
 
     self.text_lb = Turbine.UI.Label()
     self.text_lb:SetParent(self.background)
@@ -581,75 +581,30 @@ function TimerSettings:Build()
         self.reset_cb:SetEnabled(not(checked))
     end
 
-    -- row = row + 2
+    row = row + 1
 
-    -- self.use_regex_lb = Turbine.UI.Label()
-    -- self.use_regex_lb:SetParent(self.background)
-    -- self.use_regex_lb:SetFont(OPTIONS_FONT)
-    -- self.use_regex_lb:SetSize(100, row_height)
-    -- self.use_regex_lb:SetPosition(SPACER, row*row_height)
-    -- self.use_regex_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
-    -- self.use_regex_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
-    -- self.use_regex_lb:SetText("Use Regex")
+    self.use_target_entity_lb = Turbine.UI.Label()
+    self.use_target_entity_lb:SetParent(self.background)
+    self.use_target_entity_lb:SetFont(OPTIONS_FONT)
+    self.use_target_entity_lb:SetSize(150, row_height)
+    self.use_target_entity_lb:SetPosition(SPACER, row*row_height)
+    self.use_target_entity_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
+    self.use_target_entity_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
+    self.use_target_entity_lb:SetText(L.use_target_entity)
 
-    -- self.use_regex_cb =  Turbine.UI.Lotro.CheckBox()
-	-- self.use_regex_cb:SetParent(self.background)
-    -- self.use_regex_cb:SetSize(20, 20)
-    -- self.use_regex_cb:SetFont(OPTIONS_FONT)
-    -- self.use_regex_cb:SetText("")
-    -- self.use_regex_cb:SetPosition(200 - 20, row*row_height)
-    -- self.use_regex_cb:SetChecked()
-    -- self.use_regex_cb.CheckedChanged = function()
-    --     self.use_regex_lb:SetForeColor(Turbine.UI.Color.Orange)
-    -- end
-
-    -- row = row + 1
-
-    -- self.removable_lb = Turbine.UI.Label()
-    -- self.removable_lb:SetParent(self.background)
-    -- self.removable_lb:SetFont(OPTIONS_FONT)
-    -- self.removable_lb:SetSize(100, row_height)
-    -- self.removable_lb:SetPosition(SPACER, row*row_height)
-    -- self.removable_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
-    -- self.removable_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
-    -- self.removable_lb:SetText("Removable")
-
-    -- self.removable_cb =  Turbine.UI.Lotro.CheckBox()
-	-- self.removable_cb:SetParent(self.background)
-    -- self.removable_cb:SetSize(20, 20)
-    -- self.removable_cb:SetFont(OPTIONS_FONT)
-    -- self.removable_cb:SetText("")
-    -- self.removable_cb:SetPosition(200 - 20, row*row_height)
-    -- self.removable_cb:SetChecked()
-    -- self.removable_cb.CheckedChanged = function()
-    --     self.removable_lb:SetForeColor(Turbine.UI.Color.Orange)
-    -- end
-
-    -- row = row + 1
-
-    -- self.hide_timer_lb = Turbine.UI.Label()
-    -- self.hide_timer_lb:SetParent(self.background)
-    -- self.hide_timer_lb:SetFont(OPTIONS_FONT)
-    -- self.hide_timer_lb:SetSize(100, row_height)
-    -- self.hide_timer_lb:SetPosition(SPACER, row*row_height)
-    -- self.hide_timer_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
-    -- self.hide_timer_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
-    -- self.hide_timer_lb:SetText("Hide Timer")
-
-    -- self.hide_timer_cb =  Turbine.UI.Lotro.CheckBox()
-	-- self.hide_timer_cb:SetParent(self.background)
-    -- self.hide_timer_cb:SetSize(20, 20)
-    -- self.hide_timer_cb:SetFont(OPTIONS_FONT)
-    -- self.hide_timer_cb:SetText("")
-    -- self.hide_timer_cb:SetPosition(200 - 20, row*row_height)
-    -- self.hide_timer_cb:SetChecked()
-    -- self.hide_timer_cb.CheckedChanged = function()
-    --     self.hide_timer_lb:SetForeColor(Turbine.UI.Color.Orange)
-    -- end
+    self.use_target_entity_cb =  Turbine.UI.Lotro.CheckBox()
+	self.use_target_entity_cb:SetParent(self.background)
+    self.use_target_entity_cb:SetSize(20, 20)
+    self.use_target_entity_cb:SetFont(OPTIONS_FONT)
+    self.use_target_entity_cb:SetText("")
+    self.use_target_entity_cb:SetPosition(200 - 20, row*row_height)
+    self.use_target_entity_cb:SetChecked()
+    self.use_target_entity_cb.CheckedChanged = function()
+        self.use_target_entity_lb:SetForeColor(Turbine.UI.Color.Orange)
+    end
 
     local collumn2 = 210
-
-    row = row - 2
+    row = row - 3
 
     self.use_regex_lb = Turbine.UI.Label()
     self.use_regex_lb:SetParent(self.background)
@@ -715,8 +670,50 @@ function TimerSettings:Build()
         self.hide_timer_lb:SetForeColor(Turbine.UI.Color.Orange)
     end
 
+    row = row + 1
+
+    self.inkrement_lb = Turbine.UI.Label()
+    self.inkrement_lb:SetParent(self.background)
+    self.inkrement_lb:SetFont(OPTIONS_FONT)
+    self.inkrement_lb:SetSize(100, row_height)
+    self.inkrement_lb:SetPosition(collumn2, row*row_height)
+    self.inkrement_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
+    self.inkrement_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
+    self.inkrement_lb:SetText(L.inkrement)
+
+    self.inkrement_cb =  Turbine.UI.Lotro.CheckBox()
+	self.inkrement_cb:SetParent(self.background)
+    self.inkrement_cb:SetSize(20, 20)
+    self.inkrement_cb:SetFont(OPTIONS_FONT)
+    self.inkrement_cb:SetText("")
+    self.inkrement_cb:SetPosition(400 - 30, row*row_height)
+    self.inkrement_cb:SetChecked()
+    self.inkrement_cb.CheckedChanged = function()
+        self.inkrement_lb:SetForeColor(Turbine.UI.Color.Orange)
+    end
 
     row = row + 2
+
+    self.target_list_lb = Turbine.UI.Label()
+    self.target_list_lb:SetParent(self.background)
+    self.target_list_lb:SetFont(OPTIONS_FONT)
+    self.target_list_lb:SetSize(100, row_height)
+    self.target_list_lb:SetPosition(SPACER, row*row_height)
+    self.target_list_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
+    self.target_list_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
+    self.target_list_lb:SetText(L.target_list)
+
+    self.target_list_tb = Turbine.UI.Lotro.TextBox()
+    self.target_list_tb:SetSize(TIMERSETTINGS_WIDTH - 2*SPACER - 100 , 74)
+    self.target_list_tb:SetPosition(SPACER + 100, row*row_height)
+    self.target_list_tb:SetParent(self.background)
+    self.target_list_tb:SetTextAlignment(Turbine.UI.ContentAlignment.TopLeft)
+    self.target_list_tb:SetFont(OPTIONS_FONT)
+    self.target_list_tb.TextChanged = function()
+        self.target_list_lb:SetForeColor(Turbine.UI.Color.Orange)
+    end
+
+    row = row + 4
 
     self.counter_start_lb = Turbine.UI.Label()
     self.counter_start_lb:SetParent(self.background)

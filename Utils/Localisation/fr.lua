@@ -27,7 +27,7 @@ LANGUAGE[3] = "French"
 TEXTMODIFIER[1] = "No Text"
 TEXTMODIFIER[2] = "Token"
 TEXTMODIFIER[3] = "Custom Text"
-TEXTMODIFIER[4] = "Let the plugin decide"
+TEXTMODIFIER[4] = "Target Name"
 
 WINDOW_TYPE[1] = "Bar ListBox"
 WINDOW_TYPE[2] = "Bar Window"
@@ -187,3 +187,8 @@ L.ReloadMessages = {
     [ "fellowship_disband" ] = "Votre communauté s'est rompue.",
     [ "raid_disband" ] = "Votre raid a été dissout."
 }
+
+L.use_target_entity = "Use Target Entity"
+L.inkrement = "Inkrement"
+L.target_list = "List of Targets"
+L.counter_start = "Counter Value"

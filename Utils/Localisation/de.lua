@@ -27,7 +27,7 @@ LANGUAGE[3] = "Französisch"
 TEXTMODIFIER[1] = "Kein Text"
 TEXTMODIFIER[2] = "Token"
 TEXTMODIFIER[3] = "Benutzerdefinierter Text"
-TEXTMODIFIER[4] = "Lass das Plugin entscheiden"
+TEXTMODIFIER[4] = "Zielname"
 
 WINDOW_TYPE[1] = "Leistenfeld"
 WINDOW_TYPE[2] = "Leistenfenster"
@@ -161,7 +161,6 @@ L.confirmationText = "Are you sure, you want to delete:\n\n<rgb=#FF0000>"
 
 L.clearButtonText = "Clear"
 
-L.counter_start = "Counter Start"
 L.trigger_id = "Trigger"
 
 L.ReloadMessages = {
@@ -185,3 +184,8 @@ L.ReloadMessages = {
     [ "fellowship_disband" ] = "Eure Gruppe von Gefährten wurde aufgelöst.",
     [ "raid_disband" ] = "Euer Schlachtzug wurde aufgelöst."
 }
+
+L.use_target_entity = "Use Target Entity"
+L.inkrement = "Inkrement"
+L.target_list = "List of Targets"
+L.counter_start = "Counter Value"
