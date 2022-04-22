@@ -289,3 +289,34 @@ function GetImageSize(image)
 	return size_item:GetSize()
     
 end
+
+function TargetListToString(list)
+
+    if list == nil then
+        return ""
+    end
+
+    local text = ""
+
+    for index, value in ipairs(list) do
+        text = text .. value .. ";"
+    end
+
+    return text
+    
+end
+
+function TargetStringToList(string)
+
+    local list = split(string, ";")
+    local return_list = {}
+
+    for index, value in ipairs(list) do
+        if value ~= "" then
+            return_list[table.getn(return_list) + 1] = value
+        end
+    end
+
+    return return_list
+
+end

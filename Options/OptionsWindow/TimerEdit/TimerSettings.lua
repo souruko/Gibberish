@@ -168,6 +168,11 @@ function TimerSettings:SaveChanges()
     data.removable = self.removable_cb:IsChecked()
     data.hide_timer = self.hide_timer_cb:IsChecked()
 
+    data.inkrement = self.inkrement_cb:IsChecked()
+    data.use_target_entity = self.use_target_entity_cb:IsChecked()
+
+    data.target_list = Utils.TargetStringToList( self.target_list_tb:GetText() )
+
     local counter_start = self.counter_start_tb:GetText()
     if counter_start ~= "" then
         data.counter_start = counter_start
@@ -200,6 +205,9 @@ function TimerSettings:ResetColors()
     self.use_regex_lb:SetForeColor(Turbine.UI.Color.White)
     self.removable_lb:SetForeColor(Turbine.UI.Color.White)
     self.hide_timer_lb:SetForeColor(Turbine.UI.Color.White)
+    self.target_list_lb:SetForeColor(Turbine.UI.Color.White)
+    self.use_target_entity_lb:SetForeColor(Turbine.UI.Color.White)
+    self.inkrement_lb:SetForeColor(Turbine.UI.Color.White)
 
 end
 
@@ -227,11 +235,15 @@ function TimerSettings:Empty()
     self.use_regex_cb:SetChecked(false)
     self.removable_cb:SetChecked(false)
     self.hide_timer_cb:SetChecked(false)
+    self.use_target_entity_cb:SetChecked(false)
+    self.inkrement_cb:SetChecked(false)
+    self.hide_timer_cb:SetChecked(false)
+    self.target_list_tb:SetText("")
     self.counter_start:SetText("")
 
 end
 
-function TimerSettings:FillInformation() 
+function TimerSettings:FillInformation()
 
     if self.window_index == nil or self.timer_type == nil or self.timer_index == nil then
         self:Empty()
@@ -268,6 +280,11 @@ function TimerSettings:FillInformation()
     self.use_regex_cb:SetChecked(data.use_regex)
     self.removable_cb:SetChecked(data.removable)
     self.hide_timer_cb:SetChecked(data.hide_timer)
+
+    self.inkrement_cb:SetChecked(data.inkrement)
+    self.use_target_entity_cb:SetChecked(data.use_target_entity)
+
+    self.target_list_tb:SetText( Utils.TargetListToString( data.target_list ) )
 
     self.counter_start_tb:SetText(data.counter_start)
 
