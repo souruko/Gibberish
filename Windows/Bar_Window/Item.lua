@@ -55,7 +55,7 @@ function Item:Reset()
 
 end
 
-function Item:UpdateParameter(start_time, duration, icon, text, key)
+function Item:UpdateParameter(start_time, duration, icon, text, key, entity)
     
     self.key = key
     self.start_time = start_time
@@ -74,6 +74,7 @@ function Item:UpdateParameter(start_time, duration, icon, text, key)
     end
 
     self.text_label:SetText(self.text)
+    self.entity_control:SetEntity(entity)
     
     --self:ParameterChanged()
 
@@ -111,6 +112,7 @@ function Item:DataChanged()
         self.label_back:SetPosition(height + (2*frame), frame)
         self.text_label:SetSize(self.max_bar -3 -30 , height)
         self.timer_label:SetSize(self.max_bar -3, height)
+        self.entity_control:SetSize(full_width, full_height)
 
         self.text_label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
         self.timer_label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleRight)
@@ -135,6 +137,7 @@ function Item:DataChanged()
         self.label_back:SetPosition(frame, height + (2*frame))
         self.text_label:SetSize(height, self.max_bar -3 - 30)
         self.timer_label:SetSize(height, self.max_bar -3)
+        self.entity_control:SetSize(full_width, full_height)
         
         self.text_label:SetTextAlignment(Turbine.UI.ContentAlignment.TopCenter)
         self.timer_label:SetTextAlignment(Turbine.UI.ContentAlignment.BottomCenter)
@@ -154,6 +157,12 @@ function Item:DataChanged()
     self.opacity2 = savedata[self.parent.index].opacity2
     self:SetOpacity(self.opacity)
     --self.icon_control:SetOpacity(opacity)
+
+    if self.data.use_target_entity then
+        self.entity_control:SetMouseVisible(true)
+    else
+        self.entity_control:SetMouseVisible(false)
+    end
 
     self.text_label:SetFont(Utils.findfont(savedata[self.parent.index].font))
     self.timer_label:SetFont(Utils.findfont(savedata[self.parent.index].font))
@@ -289,6 +298,9 @@ function Item:Update()
 end
 
 function Item:Build()
+
+    self.entity_control = Turbine.UI.Lotro.EntityControl()
+    self.entity_control:SetParent(self)
 
     self.icon_control = Turbine.UI.Control()
     self.icon_control:SetParent(self)

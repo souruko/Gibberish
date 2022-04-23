@@ -94,7 +94,7 @@ function checkTargetEffect(effect, target)
 
                             end
 
-                            windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Target][timer_index])
+                            windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Target][timer_index], target)
 
 
                         end
@@ -138,7 +138,7 @@ function checkTargetEffect(effect, target)
 
                                 end
 
-                                windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Target][timer_index], true)
+                                windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Target][timer_index], target)
 
                             end
 
@@ -197,7 +197,7 @@ function AddTargetEffectCallbacks()
             end
 
             local effects = target:GetEffects()
-    
+
             trackingCallbacks[effects] = AddCallback(effects, "EffectAdded", function(sender, args)
                 local effect = effects:Get(args.Index)
                 checkTargetEffect(effect, target)

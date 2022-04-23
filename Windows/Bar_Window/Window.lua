@@ -113,13 +113,13 @@ function Window:DataChanged()
 
 end
 
-function Window:Add(token, key, start_time, duration, icon, text, timer_data)
+function Window:Add(token, key, start_time, duration, icon, text, timer_data, entity)
 
     for i, control in ipairs(self.controls) do
 
         if string.find(key, control.key) then
 
-            control:UpdateParameter(start_time, duration, icon, text, control.key)
+            control:UpdateParameter(start_time, duration, icon, text, control.key, entity)
             control:SetActiv(true)
 
         end

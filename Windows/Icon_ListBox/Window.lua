@@ -76,16 +76,16 @@ function Window:ItemRemove(control)
 
 end
 
-function Window:Add(token, key, start_time, duration, icon, text, timer_data)
+function Window:Add(token, key, start_time, duration, icon, text, timer_data, entity)
 
     local control = self:CheckRunning(token, key)
 
     if control then
-        control:UpdateParameter(start_time, duration, icon, text)
+        control:UpdateParameter(start_time, duration, icon, text, entity)
     else
         local index = table.getn(self.controls) + 1
 
-        self.controls[index] = Item(self, token, key, start_time, duration, icon, text, timer_data)
+        self.controls[index] = Item(self, token, key, start_time, duration, icon, text, timer_data, entity)
         self.list:AddItem(self.controls[index])
 
     end

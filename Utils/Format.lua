@@ -306,9 +306,12 @@ function TargetListToString(list)
     
 end
 
-function TargetStringToList(string)
+function TargetStringToList(text)
 
-    local list = split(string, ";")
+    text = string.gsub(text, "; ", ";")
+    text = string.gsub(text, " ;", ";")
+
+    local list = split(text, ";")
     local return_list = {}
 
     for index, value in ipairs(list) do

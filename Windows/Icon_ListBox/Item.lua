@@ -1,7 +1,7 @@
 
 Item = class( Turbine.UI.Window )
 
-function Item:Constructor(parent, token, key, start_time, duration, icon, text, data)
+function Item:Constructor(parent, token, key, start_time, duration, icon, text, data, entity)
 	Turbine.UI.Window.Constructor( self )
 
     self.parent = parent
@@ -14,6 +14,7 @@ function Item:Constructor(parent, token, key, start_time, duration, icon, text, 
     self.endtime = self.start_time + self.duration
     self.first_threshold_frame = true
 
+    self.entity = entity
     self.text = text
     self.icon = icon
 
@@ -61,7 +62,7 @@ function Item:Reset()
 
 end
 
-function Item:UpdateParameter(start_time, duration, icon, text)
+function Item:UpdateParameter(start_time, duration, icon, text, entity)
 
     self.start_time = start_time
     self.duration = duration
@@ -76,6 +77,7 @@ function Item:UpdateParameter(start_time, duration, icon, text)
         self.text = text
     end
     self.text_label:SetText(self.text)
+    self.entity_control:SetEntity(entity)
     
     --self:ParameterChanged()
 
@@ -104,7 +106,7 @@ function Item:DataChanged()
 
 	self:SetSize(full_width, full_height)
 	self.icon_control:SetSize(self.width, self.height)
-
+    self.entity_control:SetSize(full_width, full_height)
 
 	self.label_back:SetSize(self.width, self.height)
 	self.text_label:SetSize(self.width, self.height)
@@ -117,6 +119,11 @@ function Item:DataChanged()
     self.opacity2 = savedata[self.parent.index].opacity2
     --self:SetOpacity(self.opacity)
     self.icon_control:SetOpacity(self.opacity)
+    if self.data.use_target_entity then
+        self.entity_control:SetMouseVisible(true)
+    else
+        self.entity_control:SetMouseVisible(false)
+    end
 
     self.text_label:SetFont(Utils.findfont(savedata[self.parent.index].font))
     self.timer_label:SetFont(Utils.findfont(savedata[self.parent.index].font))
@@ -242,6 +249,9 @@ function Item:Update()
 end
 
 function Item:Build()
+
+    self.entity_control = Turbine.UI.Lotro.EntityControl()
+    self.entity_control:SetParent(self)
 
     self.icon_control = Turbine.UI.Control()
     self.icon_control:SetParent(self)

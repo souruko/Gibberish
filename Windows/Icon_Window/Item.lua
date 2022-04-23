@@ -30,7 +30,7 @@ function Item:Reset()
 
 end
 
-function Item:UpdateParameter(start_time, duration, icon, text, key)
+function Item:UpdateParameter(start_time, duration, icon, text, key, entity)
 
     if self.first_threshold_frame == false then
         self.icon_control:SetSize(self.width, self.height)
@@ -53,6 +53,7 @@ function Item:UpdateParameter(start_time, duration, icon, text, key)
     end
 
     self.text_label:SetText(self.text)
+    self.entity_control:SetEntity(entity)
     
     --self:ParameterChanged()
 
@@ -80,7 +81,7 @@ function Item:DataChanged()
 
 	self:SetSize(full_width, full_height)
 	self.icon_control:SetSize(self.width, self.height)
-
+    self.entity_control:SetSize(full_width, full_height)
 
 	self.label_back:SetSize(self.width, self.height)
 	self.text_label:SetSize(self.width, self.height)
@@ -97,6 +98,11 @@ function Item:DataChanged()
         self.icon_control:SetOpacity(self.opacity)
     else
         self.icon_control:SetOpacity(self.opacity2)
+    end
+    if self.data.use_target_entity then
+        self.entity_control:SetMouseVisible(true)
+    else
+        self.entity_control:SetMouseVisible(false)
     end
 
     self.text_label:SetFont(Utils.findfont(savedata[self.parent.index].font))
@@ -256,6 +262,9 @@ function Item:Update()
 end
 
 function Item:Build()
+
+    self.entity_control = Turbine.UI.Lotro.EntityControl()
+    self.entity_control:SetParent(self)
 
     self.icon_control = Turbine.UI.Control()
     self.icon_control:SetParent(self)

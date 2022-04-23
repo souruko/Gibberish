@@ -51,7 +51,7 @@ function checkSelfEffect(effect)
 
                         end
 
-                        windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Self][timer_index])
+                        windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Self][timer_index], LOCALPLAYER)
 
                     end
 
@@ -90,7 +90,7 @@ function checkSelfEffect(effect)
 
                             end
 
-                            windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Self][timer_index], true)
+                            windows[window_index]:Add(timer_data.token, key, start_time, duration, icon, text, savedata[window_index][TRIGGER_TYPE.Effect_Self][timer_index], LOCALPLAYER)
 
                         end
 

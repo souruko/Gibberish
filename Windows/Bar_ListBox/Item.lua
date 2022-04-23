@@ -2,7 +2,7 @@
 Item = class( Turbine.UI.Window )
 
 --constructor
-function Item:Constructor(parent, token, key, start_time, duration, icon, text, data)
+function Item:Constructor(parent, token, key, start_time, duration, icon, text, data, entity)
 	Turbine.UI.Window.Constructor( self )
 
     self.parent = parent
@@ -14,6 +14,7 @@ function Item:Constructor(parent, token, key, start_time, duration, icon, text, 
     self.duration = duration
     self.endtime = self.start_time + self.duration
     self.first_threshold_frame = true
+    self.entity = entity
 
     self.text = text
     self.icon = icon
@@ -66,7 +67,7 @@ function Item:Reset()
 end
 
 -- update parameters
-function Item:UpdateParameter(start_time, duration, icon, text)
+function Item:UpdateParameter(start_time, duration, icon, text, entity)
 
     self.start_time = start_time
     self.duration = duration
@@ -82,6 +83,7 @@ function Item:UpdateParameter(start_time, duration, icon, text)
     end
 
     self.text_label:SetText(self.text)
+    self.entity_control:SetEntity(entity)
     
     --self:ParameterChanged()
 
@@ -104,6 +106,7 @@ function Item:DataChanged()
     if self.orientation then
 
         self:SetSize(full_width, full_height)
+        self.entity_control:SetSize(full_width, full_height)
 
         self.icon_control:SetSize(height, height)
         self.icon_control:SetPosition(frame, frame)
@@ -120,6 +123,7 @@ function Item:DataChanged()
         self.label_back:SetPosition(height + (2*frame), frame)
         self.text_label:SetSize(self.max_bar -3 -30 , height)
         self.timer_label:SetSize(self.max_bar -3, height)
+        self.entity_control:SetSize(full_width, full_height)
 
         self.text_label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
         self.timer_label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleRight)
@@ -128,6 +132,7 @@ function Item:DataChanged()
     else
 
         self:SetSize(full_height, full_width)
+        self.entity_control:SetSize(full_width, full_height)
 
         self.icon_control:SetSize(height, height)
         self.icon_control:SetPosition(frame, frame)
@@ -166,6 +171,11 @@ function Item:DataChanged()
     self.text_label:SetFont(Utils.findfont(savedata[self.parent.index].font))
     self.timer_label:SetFont(Utils.findfont(savedata[self.parent.index].font))
 
+    if self.data.use_target_entity then
+        self.entity_control:SetMouseVisible(true)
+    else
+        self.entity_control:SetMouseVisible(false)
+    end
     self.text_label:SetText(self.text)
 
 end
@@ -183,6 +193,7 @@ function Item:ParameterChanged()
     end
 
     self.text_label:SetText(self.text)
+    self.entity_control:SetEntity(self.entity)
     
 end
 
@@ -292,6 +303,9 @@ end
 
 -- build item elements
 function Item:Build()
+
+    self.entity_control = Turbine.UI.Lotro.EntityControl()
+    self.entity_control:SetParent(self)
 
     self.icon_control = Turbine.UI.Control()
     self.icon_control:SetParent(self)
