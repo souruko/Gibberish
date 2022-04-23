@@ -331,14 +331,9 @@ function WindowSettings:SaveChanges(data)
     end
 
     local trigger_id = self.trigger_id_cb:GetSelection()
-    if trigger_id ~= nil then
-        data.trigger_id = trigger_id
-        self.trigger_id_lb:SetForeColor(Turbine.UI.Color.White)
 
-    else
-        self.trigger_id_lb:SetForeColor(Turbine.UI.Color.Red)
-
-    end
+    data.trigger_id = trigger_id
+    self.trigger_id_lb:SetForeColor(Turbine.UI.Color.White)
 
 
     local ascending = self.ascending_cb:IsChecked()

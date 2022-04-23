@@ -39,7 +39,7 @@ function ChatTriggerFound(message, chatType, window_index, timer_index)
     if savedata[window_index][TRIGGER_TYPE.Chat][timer_index].unique == true then
         key = "4_"..window_index.."w_"..timer_index.."t"
     else
-        key = "4_"..window_index.."w_"..timer_index.."t_"..chatcount.."c_"
+        key = "4_"..window_index.."w_"..timer_index.."t_"..chatcount.."c"
         chatcount = chatcount + 1
     end
 
@@ -53,8 +53,9 @@ function ChatTriggerFound(message, chatType, window_index, timer_index)
 
             if Utils.CheckTargetNames(target, savedata[window_index][TRIGGER_TYPE.Chat][timer_index].target_list) == false  then
                 return
-            end 
+            end
 
+            key = key .. target .. "p"
 
             if savedata[window_index].type == WINDOW_TYPE.Bar_ListBox or savedata[window_index].type == WINDOW_TYPE.Bar_Window then -- add name for bars
 

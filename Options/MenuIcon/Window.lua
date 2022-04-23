@@ -165,7 +165,7 @@ function Window:DrawMenu()
 end
 
 function Window:AutoReloadChanged()
-Turbine.Shell.WriteLine(tostring(savedata.automatic_reload))
+
     self.item_auto_reload:SetChecked(savedata.automatic_reload)
  
 end

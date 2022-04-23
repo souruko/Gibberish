@@ -279,6 +279,7 @@ findfont = function(number)
     end
 end
 
+
 local size_item = Turbine.UI.Control()
 -- returning image size
 function GetImageSize(image)
@@ -289,6 +290,7 @@ function GetImageSize(image)
 	return size_item:GetSize()
     
 end
+
 
 function TargetListToString(list)
 
