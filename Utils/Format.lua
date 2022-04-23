@@ -308,8 +308,7 @@ end
 
 function TargetStringToList(text)
 
-    text = string.gsub(text, "; ", ";")
-    text = string.gsub(text, " ;", ";")
+    text = string.gsub(text, "%s*;%s*", ";")
 
     local list = split(text, ";")
     local return_list = {}
