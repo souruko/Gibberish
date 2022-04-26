@@ -50,9 +50,9 @@ function checkTargetEffect(effect, target)
 
                             local key
                             if timer_data.unique == true then
-                                key = "2_"..window_index.."w_"..timer_index.."t_"..target:GetName().."p"
+                                key = "3_"..window_index.."w_"..timer_index.."t_"..target:GetName().."p"
                             else
-                                key = "2_"..window_index.."w_"..timer_index.."t_"..target:GetName().."p_"..effect:GetID().."id"
+                                key = "3_"..window_index.."w_"..timer_index.."t_"..target:GetName().."p_"..effect:GetID().."id"
                             end
 
                             local start_time = effect:GetStartTime()
@@ -111,9 +111,9 @@ function checkTargetEffect(effect, target)
 
                                 local key
                                 if timer_data.unique == true then
-                                    key = window_index.."w_"..timer_index.."t"
+                                    key = "3_"..window_index.."w_"..timer_index.."t"
                                 else
-                                    key = window_index.."w_"..timer_index.."t_"..effect:GetID().."id"
+                                    key = "3_"..window_index.."w_"..timer_index.."t_"..effect:GetID().."id"
                                 end
 
                                 local start_time = effect:GetStartTime()

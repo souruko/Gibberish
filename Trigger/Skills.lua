@@ -106,21 +106,21 @@ end
 
 
 -- all only to have a 3 second pause before calling refreshAllSkillCallbacks()
-skill_tree_changed = class( Turbine.UI.Window )
+SkillTreeChanged = class( Turbine.UI.Window )
 
-function skill_tree_changed:Constructor(parent, data)
+function SkillTreeChanged:Constructor(parent, data)
 	Turbine.UI.Window.Constructor( self )
 
     self.sleepEnd = 0
 
 end
 
-function skill_tree_changed:Go()
+function SkillTreeChanged:Go()
     self.sleepEnd = Turbine.Engine.GetGameTime() + 3
     self:SetWantsUpdates(true)
 end
 
-function skill_tree_changed:Update()
+function SkillTreeChanged:Update()
 
     if Turbine.Engine.GetGameTime() > self.sleepEnd then
         self:SetWantsUpdates(false)
@@ -131,4 +131,4 @@ function skill_tree_changed:Update()
 end
 
 
-skill_tree_changed_control = skill_tree_changed()
+SkillTreeChanged_control = SkillTreeChanged()

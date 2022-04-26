@@ -172,7 +172,7 @@ function Turbine.Chat.Received(sender, args)
         
         if message_begin ~= nil then
                           
-            skill_tree_changed_control:Go()
+            SkillTreeChanged_control:Go()
             
         end
         

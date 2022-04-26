@@ -80,9 +80,9 @@ function checkGroupEffect(effect, player)
 
                                 local key
                                 if timer_data.unique == true then
-                                    key = window_index.."w_"..timer_index.."t"
+                                    key = "2_"..window_index.."w_"..timer_index.."t"
                                 else
-                                    key = window_index.."w_"..timer_index.."t_"..effect:GetID().."id"
+                                    key = "2_"..window_index.."w_"..timer_index.."t_"..effect:GetID().."id"
                                 end
 
                                 local start_time = effect:GetStartTime()
