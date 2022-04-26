@@ -253,8 +253,13 @@ if Turbine.PluginData.Load(Turbine.DataScope.Account, "gibberish_global_backup_"
             if index ~= nil then
 
                 window_data.load = chardata[index].load
-                window_data.left = chardata[index].left
-                window_data.top = chardata[index].top
+
+                if not(window_data.global_position) then
+                    window_data.left = chardata[index].left
+                    window_data.top = chardata[index].top
+                end
+
+                
 
             else
 

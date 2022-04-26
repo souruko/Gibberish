@@ -189,3 +189,5 @@ L.use_target_entity = "Use Target Entity"
 L.inkrement = "Inkrement"
 L.target_list = "List of Targets"
 L.counter_start = "Counter Value"
+
+L.global_pos = "Position Global speichern"

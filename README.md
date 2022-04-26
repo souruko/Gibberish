@@ -10,6 +10,9 @@ Lotro LUA Plugin for all the timers
 
 # ChangeLog
 
+2.7.1
+- Fixed an erorr where target/group effects did not longer work with certain window types
+
 2.7.0
 - Added Inkrement to change the counting direction
 - Added Use Target Entity to Bind Clickable entitys to timers
