@@ -114,7 +114,6 @@ function Window:DataChanged()
 end
 
 function Window:Add(token, key, start_time, duration, icon, text, timer_data, entity)
-Turbine.Shell.WriteLine(key)
     for i, control in ipairs(self.controls) do
 
         if string.find(key, control.key) then
@@ -142,21 +141,15 @@ function Window:Remove(key)
     
 end
 
+-- reset all timers with the reset setting
 function Window:ResetAll()
 
-    local list = {}
     for index, control in ipairs(self.controls) do
-        if control:WillReset() == true then
-            list[table.getn(list) + 1] = control
-        end
+       if control:WillReset() == true then
+            control:Reset()
+       end
     end
-
-    for index, control in ipairs(list) do
-        control:Reset()
-    end
-
 end
-
 
 ---------------------------------------------------------------------------------------------------------
 --private

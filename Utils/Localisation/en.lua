@@ -132,6 +132,7 @@ L.transparency2 = "Transparency (passiv)"
 L.ascending = "Ascending"
 L.orientation = "Orientation"
 L.overlay = "Overlay"
+L.resetOnTargetChange = "Reset on Target Change"
 L.resetToDefault = "Reset to Default"
 L.save = "Save"
 L.description = "Description"
@@ -185,7 +186,6 @@ L.ReloadMessages = {
     [ "fellowship_disband" ] = "Your Fellowship has been disbanded.",
     [ "raid_disband" ] = "Your Raid has been disbanded."
 }
-
 
 L.use_target_entity = "Use Target Entity"
 L.inkrement = "Inkrement"

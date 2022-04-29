@@ -1,4 +1,4 @@
-# Gibberish v 2.6.0
+# Gibberish v 2.7.1
 
 Lotro LUA Plugin for all the timers
 
@@ -9,6 +9,10 @@ Lotro LUA Plugin for all the timers
 
 
 # ChangeLog
+
+2.7.1
+- Added Reset window timers on target change
+- Added Tier tracking in Custom Text & some cleanup
 
 2.7.0
 - Added Inkrement to change the counting direction

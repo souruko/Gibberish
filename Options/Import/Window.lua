@@ -121,6 +121,7 @@ function Window:WindowToString(window_data)
     text = text.."ascending~="..tostring(window_data.ascending)..";\n"
     text = text.."orientation~="..tostring(window_data.orientation)..";\n"
     text = text.."overlay~="..tostring(window_data.overlay)..";\n"
+    text = text.."reset_on_target_change~="..tostring(window_data.reset_on_target_change)..";\n"
     text = text.."trigger_id~="..tostring(window_data.trigger_id)..";\n"
 
 
@@ -369,6 +370,9 @@ function Window:InterpreteWindow(text, old)
     if list["overlay"] ~= nil then
         list["overlay"] = Utils.StringToBool(list["overlay"])
     end
+    if list["reset_on_target_change"] ~= nil then
+        list["reset_on_target_change"] = Utils.StringToBool(list["reset_on_target_change"])
+    end
     if list["load"] ~= nil then
         list["load"] = Utils.StringToBool(list["load"])
     end
@@ -475,6 +479,9 @@ function Window:ConvertWindow(text, old)
     end
     if window_info_list["overlay"] ~= nil then
         savedata[window_index].overlay = window_info_list["overlay"]
+    end
+    if window_info_list["reset_on_target_change"] ~= nil then
+        savedata[window_index].reset_on_target_change = window_info_list["reset_on_target_change"]
     end
     if window_info_list["load"] ~= nil then
         savedata[window_index].load = window_info_list["load"]
