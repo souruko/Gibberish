@@ -10,6 +10,12 @@ Lotro LUA Plugin for all the timers
 
 # ChangeLog
 
+2.8.0
+- Added window setting to save position globaly for  all characters
+
+2.7.2
+- Fixed some smaller bugs
+
 2.7.1
 - Fixed an erorr where target/group effects did not longer work with certain window types
 

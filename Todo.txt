@@ -3,9 +3,7 @@ Fixes
 
     - iconsize in timerselection is broken after saving timer changes
     - make export-strings "nicer"
-    - saving window data trigger becomes red
     - rework countdown
-    - target entity only in settings sofar
 
 New Features
 
@@ -16,4 +14,3 @@ New Features
     - target morale as trigger
     - a way to add a trigger as remover for another timer
     - reset individuell windows or even timer per chat comand
-    - window setting for save global (checkmark where if set it will always use the accountfile information)
