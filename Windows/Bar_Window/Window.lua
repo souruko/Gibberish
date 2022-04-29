@@ -114,7 +114,7 @@ function Window:DataChanged()
 end
 
 function Window:Add(token, key, start_time, duration, icon, text, timer_data, entity)
-Turbine.Shell.WriteLine(key)
+
     for i, control in ipairs(self.controls) do
 
         if string.find(key, control.key) then
@@ -187,7 +187,7 @@ function Window:Fill()
                 local key = i.."_"..self.index.."w_"..j.."t"
                 self.controls[index] = Item(self, timer_data, key)
                 self.list:AddItem(self.controls[index])
-                Turbine.Shell.WriteLine(key)
+
             end
 
         end

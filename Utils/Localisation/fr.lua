@@ -189,7 +189,7 @@ L.ReloadMessages = {
 }
 
 L.use_target_entity = "Use Target Entity"
-L.inkrement = "Inkrement"
+L.increment = "increment"
 L.target_list = "List of Targets"
 L.counter_start = "Counter Value"
 

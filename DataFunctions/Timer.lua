@@ -22,7 +22,7 @@ function GetBaseTimer()
 	data.use_regex       = false
 	data.hide_timer      = false
     data.counter_start   = nil
-    data.inkrement       = false
+    data.increment       = false
     data.use_target_entity = false
     data.target_list = nil
 
