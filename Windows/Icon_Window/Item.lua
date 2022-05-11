@@ -206,7 +206,7 @@ function Item:Update()
 
     if time_left < 99999 then
 
-        if self.data.inkrement == true then
+        if self.data.increment == true then
             self.timer_label:SetText(Utils.SecondsToClock( (self.duration - time_left), self.number_format))
 
         else

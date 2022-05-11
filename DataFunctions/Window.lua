@@ -6,6 +6,7 @@ function AddWindow(name, type)
     savedata[index] = {}
     savedata[index].name                        = name
     savedata[index].type                        = type
+    savedata[index].global_position             = false
     savedata[index].id                          = savedata.next_window_id
     savedata[index].load                        = true
     savedata[index].group                       = nil

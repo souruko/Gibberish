@@ -180,7 +180,7 @@ function Window:Fill()
                 local key = i.."_"..self.index.."w_"..j.."t"
                 self.controls[index] = Item(self, timer_data, key)
                 self.list:AddItem(self.controls[index])
-                Turbine.Shell.WriteLine(key)
+
             end
 
         end

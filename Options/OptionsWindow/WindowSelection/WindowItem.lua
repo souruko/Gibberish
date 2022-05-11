@@ -48,7 +48,7 @@ function WindowItem:ContainsSearchText(searchText)
 
 end
 
-
+ 
 ---------------------------------------------------------------------------------------------------------
 --private
 
@@ -57,9 +57,11 @@ function WindowItem:AddToGroup()
     local group_menu = Turbine.UI.ContextMenu()
     local group_items = group_menu:GetItems()
 
-    local inserted = false;
+    local inserted
 
     for i , data in ipairs(savedata.groups) do
+
+        inserted = false
 
         local item = Turbine.UI.MenuItem( data.name , true )
 

@@ -103,6 +103,7 @@ function WindowSettings:ResetEditColors()
     self.transparency1_lb:SetForeColor(Turbine.UI.Color.White)
     self.transparency2_lb:SetForeColor(Turbine.UI.Color.White)
 
+    self.global_pos_lb:SetForeColor(Turbine.UI.Color.White)
     self.ascending_lb:SetForeColor(Turbine.UI.Color.White)
     self.orientation_lb:SetForeColor(Turbine.UI.Color.White)
     self.overlay_lb:SetForeColor(Turbine.UI.Color.White)
@@ -336,6 +337,9 @@ function WindowSettings:SaveChanges(data)
     data.trigger_id = trigger_id
     self.trigger_id_lb:SetForeColor(Turbine.UI.Color.White)
 
+    local global_pos = self.global_pos_cb:IsChecked()
+    data.global_position = global_pos
+    self.global_pos_lb:SetForeColor(Turbine.UI.Color.White)
 
     local ascending = self.ascending_cb:IsChecked()
     data.ascending = ascending
@@ -437,7 +441,7 @@ function WindowSettings:ResetToDefault_Window()
     self.transparency2_value:SetText(data.opacity2)
     self.transparency2_bar:SetValue(data.opacity2 * 100)
 
-
+    self.global_pos_cb:SetChecked(data.global_position)
     self.ascending_cb:SetChecked(data.ascending)
     self.orientation_cb:SetChecked(data.orientation)
     self.overlay_cb:SetChecked(data.overlay)
@@ -529,7 +533,7 @@ function WindowSettings:FillInformation()
     end
     self.trigger_id_cb:SetSelection(data.trigger_id)
 
-
+    self.global_pos_cb:SetChecked(data.global_position)
     self.ascending_cb:SetChecked(data.ascending)
     self.orientation_cb:SetChecked(data.orientation)
     self.overlay_cb:SetChecked(data.overlay)
@@ -574,6 +578,7 @@ function WindowSettings:FillEmpty()
 
     self.trigger_id_cb:Clear()
 
+    self.global_pos_cb:SetChecked(false)
     self.ascending_cb:SetChecked(false)
     self.orientation_cb:SetChecked(false)
     self.overlay_cb:SetChecked(false)
@@ -668,48 +673,27 @@ function WindowSettings:Build()
 
     row = row + 2
 
-    -- self.left_lb = Turbine.UI.Label()
-    -- self.left_lb:SetParent(self.background)
-    -- self.left_lb:SetFont(OPTIONS_FONT)
-    -- self.left_lb:SetSize(50, row_height)
-    -- self.left_lb:SetPosition(SPACER, row*row_height)
-    -- self.left_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
-    -- self.left_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
-    -- self.left_lb:SetText("Left")
+    self.global_pos_lb = Turbine.UI.Label()
+    self.global_pos_lb:SetParent(self.background)
+    self.global_pos_lb:SetFont(OPTIONS_FONT)
+    self.global_pos_lb:SetSize(150, row_height)
+    self.global_pos_lb:SetPosition(SPACER, row*row_height)
+    self.global_pos_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
+    self.global_pos_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
+    self.global_pos_lb:SetText(L.global_pos)
+    
 
+    self.global_pos_cb =  Turbine.UI.Lotro.CheckBox()
+	self.global_pos_cb:SetParent(self.background)
+    self.global_pos_cb:SetSize(120, 25)
+    self.global_pos_cb:SetFont(OPTIONS_FONT)
+    self.global_pos_cb:SetText("")
+    self.global_pos_cb:SetPosition(335, row* row_height)
+    self.global_pos_cb.CheckedChanged = function()
+        self.global_pos_lb:SetForeColor(Turbine.UI.Color.Orange)
+    end
 
-    -- self.left_tb = Turbine.UI.Lotro.TextBox()
-    -- self.left_tb:SetSize(60 , row_height)
-    -- self.left_tb:SetPosition(290 , row*row_height)
-    -- self.left_tb:SetParent(self.background)
-    -- self.left_tb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
-    -- self.left_tb:SetFont(OPTIONS_FONT)
-    -- self.left_tb.TextChanged = function()
-    --     self.left_lb:SetForeColor(Turbine.UI.Color.Orange)
-    -- end
-
-    -- row = row + 1
-
-    -- self.top_lb = Turbine.UI.Label()
-    -- self.top_lb:SetParent(self.background)
-    -- self.top_lb:SetFont(OPTIONS_FONT)
-    -- self.top_lb:SetSize(50, row_height)
-    -- self.top_lb:SetPosition(SPACER, row*row_height)
-    -- self.top_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
-    -- self.top_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
-    -- self.top_lb:SetText("Top")
-
-    -- self.top_tb = Turbine.UI.Lotro.TextBox()
-    -- self.top_tb:SetSize(60 , row_height)
-    -- self.top_tb:SetPosition(290 , row*row_height)
-    -- self.top_tb:SetParent(self.background)
-    -- self.top_tb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
-    -- self.top_tb:SetFont(OPTIONS_FONT)
-    -- self.top_tb.TextChanged = function()
-    --     self.top_lb:SetForeColor(Turbine.UI.Color.Orange)
-    -- end
-
-    -- row = row + 1
+    row = row + 2
 
     self.width_lb = Turbine.UI.Label()
     self.width_lb:SetParent(self.background)
