@@ -82,7 +82,7 @@ function checkAllActivTargetEffects()
         local effects = target:GetEffects()
 
         for window_index, window_data in ipairs(savedata) do
-            if window_data.reset_on_target_change == true then
+            if window_data.load and window_data.reset_on_target_change == true then
                 windows[window_index]:ResetAll()
             end
         end
