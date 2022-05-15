@@ -196,11 +196,13 @@ function MainWindow:Build()
     local window_selection_width = 200
     local spacer = 10
 
-    
+    local width = math.max(optionsdata.options_window.width, OPTIONS_MAINWINDOW_WIDTH)
+    local height = math.max(optionsdata.options_window.height, OPTIONS_MAINWINDOW_HEIGHT)
+
     self.veil = Turbine.UI.Window()
     self.veil:SetParent(self)
     self.veil:SetPosition(SPACER, TOP_SPACER)
-    self.veil:SetSize(optionsdata.options_window.width - (2* SPACER), optionsdata.options_window.height - SPACER - TOP_SPACER)
+    self.veil:SetSize(width - (2* SPACER), height - SPACER - TOP_SPACER)
     self.veil:SetBackColor(Turbine.UI.Color.Black)
     self.veil:SetOpacity(0.7)
     self.veil:SetZOrder(10)
@@ -225,7 +227,7 @@ function MainWindow:Build()
     self.general_options = GeneralOptions(self)
     
     self:SetWantsKeyEvents(true)
-    self:SetSize(optionsdata.options_window.width, optionsdata.options_window.height)
+    self:SetSize(width, height)
     self:SetVisible(true)
 
 end
@@ -242,9 +244,9 @@ end
 
 function MainWindow:SizeChanged()
 
-    optionsdata.options_window.width, optionsdata.options_window.height = self:GetSize()
+    width, height = self:GetSize()
 
-    self.veil:SetSize(optionsdata.options_window.width - (2* SPACER), optionsdata.options_window.height - SPACER - TOP_SPACER)
+    self.veil:SetSize(width - (2* SPACER), height - SPACER - TOP_SPACER)
 
     self.window_selection:Resize()
     self.timer_selection:Resize()

@@ -60,12 +60,15 @@ function Window:Build()
 
     self.timer_settings = TimerSettings(self)
     self.collection_overview = CollectionOverview(self)
-    
+
+    local width = optionsdata.timer_edit.width
+    local height = math.max(optionsdata.timer_edit.height, OPTIONS_TIMEREDIT_HEIGHT)
+
     self:SetPosition(optionsdata.timer_edit.left, optionsdata.timer_edit.top)
-    self:SetSize(optionsdata.timer_edit.width, optionsdata.timer_edit.height)
+    self:SetSize(width, height)
     self:SetResizable(true)
-    self:SetMinimumSize(optionsdata.timer_edit.width, OPTIONS_TIMEREDIT_HEIGHT)
-    self:SetMaximumWidth(optionsdata.timer_edit.width)
+    self:SetMinimumSize(width, OPTIONS_TIMEREDIT_HEIGHT)
+    self:SetMaximumWidth(width)
     self:SetZOrder(14)
 
 end

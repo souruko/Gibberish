@@ -20,8 +20,8 @@ end
 function WindowSettings:Resize()
 
 
-    self:SetHeight(optionsdata.options_window.height - SPACER - 100)
-    self.background:SetHeight(optionsdata.options_window.height - SPACER - 110)
+    self:SetHeight(math.max(optionsdata.options_window.height, OPTIONS_MAINWINDOW_HEIGHT) - SPACER - 100)
+    self.background:SetHeight(math.max(optionsdata.options_window.height, OPTIONS_MAINWINDOW_HEIGHT) - SPACER - 110)
 
 
 end

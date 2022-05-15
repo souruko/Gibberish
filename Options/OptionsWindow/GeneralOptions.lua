@@ -18,7 +18,7 @@ end
 
 function GeneralOptions:Resize()
 
-    self:SetPosition(SPACER + WINDOWSELECTION_WIDTH + SPACER + WINDOWSELECTION_WIDTH + SPACER, optionsdata.options_window.height - SPACER - 100)
+    self:SetPosition(SPACER + WINDOWSELECTION_WIDTH + SPACER + WINDOWSELECTION_WIDTH + SPACER, math.max(optionsdata.options_window.height, OPTIONS_MAINWINDOW_HEIGHT) - SPACER - 100)
 
 end
 

@@ -45,7 +45,7 @@ function AddWindow(name, type)
     savedata[index].orientation                 = optionsdata.default_visual[type].orientation
     savedata[index].overlay                     = optionsdata.default_visual[type].overlay
     savedata[index].reset_on_target_change      = optionsdata.default_visual[type].reset_on_target_change
-    
+
     savedata[index][TRIGGER_TYPE.Effect_Self]           = {}
     savedata[index][TRIGGER_TYPE.Effect_Group]           = {}
     savedata[index][TRIGGER_TYPE.Chat]                   = {}

@@ -61,7 +61,7 @@ end
 function Window:Resize()
 
     local width = WINDOWSELECTION_WIDTH - (3 * FRAME)
-    local height = optionsdata.options_window.height - 50
+    local height = math.max(optionsdata.options_window.height, OPTIONS_MAINWINDOW_HEIGHT) - 50
 
     self:SetSize(WINDOWSELECTION_WIDTH, height)
     self.list:SetSize(width, height - (2*FRAME) - TOP_BAR - SEARCH_HEIGHT)
