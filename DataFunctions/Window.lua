@@ -44,6 +44,8 @@ function AddWindow(name, type)
     savedata[index].ascending                   = optionsdata.default_visual[type].ascending
     savedata[index].orientation                 = optionsdata.default_visual[type].orientation
     savedata[index].overlay                     = optionsdata.default_visual[type].overlay
+    savedata[index].reset_on_target_change      = optionsdata.default_visual[type].reset_on_target_change
+    
     savedata[index][TRIGGER_TYPE.Effect_Self]           = {}
     savedata[index][TRIGGER_TYPE.Effect_Group]           = {}
     savedata[index][TRIGGER_TYPE.Chat]                   = {}
@@ -119,6 +121,7 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Bar_ListBox].ascending               = false
         optionsdata.default_visual[WINDOW_TYPE.Bar_ListBox].orientation             = true
         optionsdata.default_visual[WINDOW_TYPE.Bar_ListBox].overlay                 = false
+        optionsdata.default_visual[WINDOW_TYPE.Bar_ListBox].reset_on_target_change  = false
     
     elseif window_type == WINDOW_TYPE.Bar_Window then
 
@@ -156,6 +159,7 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Bar_Window].ascending               = false
         optionsdata.default_visual[WINDOW_TYPE.Bar_Window].orientation             = true
         optionsdata.default_visual[WINDOW_TYPE.Bar_Window].overlay                 = false
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Window].reset_on_target_change  = false
 
     elseif window_type == WINDOW_TYPE.Icon_ListBox then
 
@@ -193,6 +197,7 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Icon_ListBox].ascending               = false
         optionsdata.default_visual[WINDOW_TYPE.Icon_ListBox].orientation             = true
         optionsdata.default_visual[WINDOW_TYPE.Icon_ListBox].overlay                 = false
+        optionsdata.default_visual[WINDOW_TYPE.Icon_ListBox].reset_on_target_change  = false
 
     elseif window_type == WINDOW_TYPE.Icon_Window then
 
@@ -230,6 +235,7 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Icon_Window].ascending               = false
         optionsdata.default_visual[WINDOW_TYPE.Icon_Window].orientation             = true
         optionsdata.default_visual[WINDOW_TYPE.Icon_Window].overlay                 = false
+        optionsdata.default_visual[WINDOW_TYPE.Icon_Window].reset_on_target_change  = false
 
     elseif window_type == WINDOW_TYPE.Count_Down then
 
@@ -267,6 +273,7 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Count_Down].ascending               = false
         optionsdata.default_visual[WINDOW_TYPE.Count_Down].orientation             = true
         optionsdata.default_visual[WINDOW_TYPE.Count_Down].overlay                 = false
+        optionsdata.default_visual[WINDOW_TYPE.Count_Down].reset_on_target_change  = false
 
     end
 

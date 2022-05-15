@@ -347,3 +347,36 @@ function CheckTargetNames(name, list)
     return false
     
 end
+
+function ParseWindowTimerText(name, timer_data, window_data, target)
+    local text_modifier = timer_data.text_modifier
+    local tier = nil
+    local text = ""
+    if text_modifier == TEXTMODIFIER.Let_the_plugin_decide or text_modifier == TEXTMODIFIER.Custom_Text then
+        local start_tier, end_tier = string.find(name, "%d+") -- check if name has some sort of number / tier
+        if start_tier ~= nil then
+            tier = string.sub(name, start_tier, end_tier)
+        end
+    end
+    if text_modifier == TEXTMODIFIER.Let_the_plugin_decide then
+        if window_data.type == WINDOW_TYPE.Bar_ListBox or window_data.type == WINDOW_TYPE.Bar_Window then -- add name for bars
+            text = target
+        end
+    elseif text_modifier == TEXTMODIFIER.Token then
+        text = timer_data.token
+    elseif text_modifier == TEXTMODIFIER.Custom_Text then
+        text = timer_data.text
+    end
+    if tier ~= nil then
+        if #text ~= 0 then
+            if text_modifier == TEXTMODIFIER.Custom_Text then
+                text = text .. " - " .. tier
+            else
+                text = tier .. " - " .. text
+            end
+        else
+            text = tier
+        end
+    end
+    return text
+end

@@ -107,6 +107,7 @@ function WindowSettings:ResetEditColors()
     self.ascending_lb:SetForeColor(Turbine.UI.Color.White)
     self.orientation_lb:SetForeColor(Turbine.UI.Color.White)
     self.overlay_lb:SetForeColor(Turbine.UI.Color.White)
+    self.reset_on_target_change_lb:SetForeColor(Turbine.UI.Color.White)
 
 end
 
@@ -352,6 +353,10 @@ function WindowSettings:SaveChanges(data)
     data.overlay = overlay
     self.overlay_lb:SetForeColor(Turbine.UI.Color.White)
 
+    local reset_on_target_change = self.reset_on_target_change_cb:IsChecked()
+    data.reset_on_target_change = reset_on_target_change
+    self.reset_on_target_change_lb:SetForeColor(Turbine.UI.Color.White)
+
     --self:ResetEditColors()
     SaveWindowData()
     Windows.Reload(G.selected_index_window)
@@ -440,6 +445,7 @@ function WindowSettings:ResetToDefault_Window()
     self.ascending_cb:SetChecked(data.ascending)
     self.orientation_cb:SetChecked(data.orientation)
     self.overlay_cb:SetChecked(data.overlay)
+    self.reset_on_target_change_cb:SetChecked(data.reset_on_target_change)
 
     if self.frame_color_tb:GetText() ~= Utils.ColorToString(data.frame_color) then
         self.frame_color_lb:SetForeColor(Turbine.UI.Color.Orange)
@@ -531,6 +537,7 @@ function WindowSettings:FillInformation()
     self.ascending_cb:SetChecked(data.ascending)
     self.orientation_cb:SetChecked(data.orientation)
     self.overlay_cb:SetChecked(data.overlay)
+    self.reset_on_target_change_cb:SetChecked(data.reset_on_target_change)
 
     self.frame_color_control:SetBackColor(Utils.ColorFix(data.frame_color))
     self.frame_color_tb:SetText(Utils.ColorToString(data.frame_color))
@@ -575,6 +582,7 @@ function WindowSettings:FillEmpty()
     self.ascending_cb:SetChecked(false)
     self.orientation_cb:SetChecked(false)
     self.overlay_cb:SetChecked(false)
+    self.reset_on_target_change_cb:SetChecked(false)
 
     self.frame_color_control:SetBackColor(Turbine.UI.Color.Black)
     self.frame_color_tb:SetText("")
@@ -1188,6 +1196,25 @@ function WindowSettings:Build()
     self.ascending_cb:SetPosition(100, row* row_height)
     self.ascending_cb.CheckedChanged = function()
         self.ascending_lb:SetForeColor(Turbine.UI.Color.Orange)
+    end
+
+    self.reset_on_target_change_lb = Turbine.UI.Label()
+    self.reset_on_target_change_lb:SetParent(self.background)
+    self.reset_on_target_change_lb:SetFont(OPTIONS_FONT)
+    self.reset_on_target_change_lb:SetSize(200, row_height)
+    self.reset_on_target_change_lb:SetPosition(SPACER + 132, row*row_height)
+    self.reset_on_target_change_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
+    self.reset_on_target_change_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
+    self.reset_on_target_change_lb:SetText(L.resetOnTargetChange)
+
+    self.reset_on_target_change_cb =  Turbine.UI.Lotro.CheckBox()
+	self.reset_on_target_change_cb:SetParent(self.background)
+    self.reset_on_target_change_cb:SetSize(120, 25)
+    self.reset_on_target_change_cb:SetFont(OPTIONS_FONT)
+    self.reset_on_target_change_cb:SetText("")
+    self.reset_on_target_change_cb:SetPosition(332, row* row_height)
+    self.reset_on_target_change_cb.CheckedChanged = function()
+        self.reset_on_target_change_lb:SetForeColor(Turbine.UI.Color.Orange)
     end
 
     row = row + 1

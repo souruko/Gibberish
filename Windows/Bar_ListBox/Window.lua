@@ -146,17 +146,11 @@ end
 -- reset all timers with the reset setting
 function Window:ResetAll()
 
-    local list = {}
     for index, control in ipairs(self.controls) do
-        if control:WillReset() == true then
-            list[table.getn(list) + 1] = control
-        end
+       if control:WillReset() == true then
+            control:Reset()
+       end
     end
-
-    for index, control in ipairs(list) do
-        control:Reset()
-    end
-
 end
 
 --update visual parameter
