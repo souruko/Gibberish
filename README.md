@@ -1,4 +1,4 @@
-# Gibberish v 2.7.1
+# Gibberish
 
 Lotro LUA Plugin for all the timers
 
@@ -9,6 +9,9 @@ Lotro LUA Plugin for all the timers
 
 
 # ChangeLog
+
+2.8.2
+- Fixed window size to always atleast be minimum size
 
 2.8.1
 - Added Reset window timers on target change
