@@ -197,9 +197,20 @@ function Window:Draw()
     self:SetZOrder(20)
 
     self:SetIconFromTrackInformation()
-
     self:DrawMenu()
 
     self:SetVisible(true)
+    self:SetWantsKeyEvents(true)
 
+    self.KeyDown = function(sender, args)
+        if args.Action == Turbine.UI.Lotro.Action.ToggleHUD then
+            local hidden = not self:IsVisible()
+            self:SetVisible(hidden)
+            for index, window_data in ipairs(savedata) do
+                if window_data.load == true then
+                    windows[index]:SetVisible(hidden)
+                end
+            end
+        end
+    end
 end
