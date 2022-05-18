@@ -10,10 +10,13 @@ Lotro LUA Plugin for all the timers
 
 # ChangeLog
 
+2.8.3 (author: kyku)
+- Handle Toggle UI button
+
 2.8.2
 - Fixed window size to always atleast be minimum size
 
-2.8.1
+2.8.1 (author: kyku)
 - Added Reset window timers on target change
 - Added Tier tracking in Custom Text & some cleanup
 
