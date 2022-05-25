@@ -202,11 +202,18 @@ end
 -- reset all timers with the reset setting
 function Window:ResetAll()
 
-    for index, control in ipairs(self.controls) do
+    local temp_list = {}
+
+    for index, control in pairs(self.controls) do
        if control:WillReset() == true then
-            control:Reset()
+            temp_list[#temp_list+1] = index
        end
     end
+
+    for i = #temp_list, 1, -1 do
+        self.controls[temp_list[i]]:Reset()
+    end
+    
 end
 
 --update visual parameter

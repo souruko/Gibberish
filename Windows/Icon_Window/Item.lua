@@ -28,6 +28,8 @@ end
 
 function Item:Reset()
 
+    self:ShutDown()
+
 end
 
 function Item:UpdateParameter(start_time, duration, icon, text, key, entity)

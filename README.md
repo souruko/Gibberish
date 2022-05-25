@@ -10,6 +10,9 @@ Lotro LUA Plugin for all the timers
 
 # ChangeLog
 
+2.8.4
+- Fixed window reset
+
 2.8.3 (author: kyku)
 - Handle Toggle UI button
 
