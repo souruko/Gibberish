@@ -10,7 +10,6 @@ function ChatControl:Constructor(parent, width, data)
 
     self.parent = parent
 
-    self.index = index
     self.token = data.message
     self.data = data
     self.width = width
@@ -35,7 +34,7 @@ function ChatControl:Build()
 
     self.frame = Turbine.UI.Control()
     self.frame:SetParent(self)
-    self.frame:SetBackColor(Turbine.UI.Color.Back)
+    self.frame:SetBackColor(Turbine.UI.Color.Black)
     self.frame:SetWidth(self.width)
     self.frame:SetMouseVisible(false)
 
@@ -92,7 +91,7 @@ function ChatControl:Build()
     end
 
     self.MouseLeave = function()
-        self.frame:SetBackColor(Turbine.UI.Color.Back)
+        self.frame:SetBackColor(Turbine.UI.Color.Black)
         self:SetZOrder(nil)
     end
 

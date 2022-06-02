@@ -1,3 +1,6 @@
+import "Gibberish.Options.OptionsWindow.TimerEdit.CollectionList"
+import "Gibberish.Options.OptionsWindow.TimerEdit.CollectionOverView"
+import "Gibberish.Options.OptionsWindow.TimerEdit.TimerSettings"
 --[[
     OptionsWindow child for timer information
 ]]

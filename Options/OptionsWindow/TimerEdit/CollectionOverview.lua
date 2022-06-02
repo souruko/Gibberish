@@ -1,3 +1,4 @@
+import "Gibberish.Options.OptionsWindow.TimerEdit.Items"
 --[[
     TimerEdit child for displaying CollectionLists
 ]]
@@ -77,7 +78,7 @@ function CollectionOverview:CreateEffectControls()
     for index, data in ipairs(collectiondata.effects) do
         self.effect_controls[index] = Items.EffectControl(self, width, data)
     end
-    local i = table.getn(self.effect_controls)
+    local i = #self.effect_controls
     for index, data in ipairs(collectiontemp.effects) do
         self.effect_controls[i + index] = Items.EffectControl(self, width, data)
     end
@@ -130,7 +131,7 @@ function CollectionOverview:CreateTimerControls()
         for j, name in ipairs(TRIGGER_TYPE) do
             for k, timer_data in ipairs(window_data[j]) do
 
-                local index = table.getn(self.timer_controls) + 1 
+                local index = #self.timer_controls + 1 
                 self.timer_controls[index] = Items.TimerControl(self, width, i, j, k, timer_data)
 
             end

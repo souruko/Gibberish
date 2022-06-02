@@ -33,7 +33,7 @@ function Window:GetChatTimerList()
         local t_type = string.sub(control.key, 1 , 1)
 
         if t_type == "4" or t_type == "5" or t_type == "6" or t_type == "7" then
-            list[table.getn(list) + 1] =  control:GetReloadData()
+            list[#list + 1] =  control:GetReloadData()
         end
 
     end

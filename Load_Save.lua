@@ -31,8 +31,8 @@ function SaveChatTimer()
 
             local temp = windows[index]:GetChatTimerList()
 
-            if table.getn(temp) > 0 then
-                list[table.getn(list) + 1] = temp
+            if #temp > 0 then
+                list[#list + 1] = temp
             end
 
         end
