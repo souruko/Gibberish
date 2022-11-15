@@ -10,6 +10,9 @@ Lotro LUA Plugin for all the timers
 
 # ChangeLog
 
+2.8.5
+- Fixed russian language issue
+
 2.8.4
 - Fixed window reset
 
