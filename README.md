@@ -10,6 +10,9 @@ Lotro LUA Plugin for all the timers
 
 # ChangeLog
 
+2.8.6
+- Fixed Issue where Windows did not properly displayed effects after traitline changed
+
 2.8.5
 - Fixed russian language issue
 

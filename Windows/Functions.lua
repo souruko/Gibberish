@@ -11,6 +11,10 @@ function SkillTreeChanged()
 
     end
 
+    Trigger.Effects.checkAllActivSelfEffects()
+    Trigger.Effects.checkAllActivGroupEffects()
+    Trigger.Effects.checkAllActivTargetEffects()
+
 end
 
 function GroupDeleted()

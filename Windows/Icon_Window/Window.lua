@@ -168,7 +168,6 @@ function Window:Clear()
 
     self.list:ClearItems()
 
-    self.list:ClearItems()
 	for i,item in ipairs(self.controls) do
 		item:Close()
 	end
@@ -180,7 +179,7 @@ function Window:Fill()
 
     self:Clear()
 
-    for i=1, table.getn(TRIGGER_TYPE), 1 do
+    for i=1, #TRIGGER_TYPE, 1 do
 
         for j, timer_data in ipairs(savedata[self.index][i]) do
 

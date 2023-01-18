@@ -2,7 +2,7 @@
 <PluginConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Id>1143</Id>
   <Name>Gibberish</Name>
-  <Version>2.8.4</Version>
+  <Version>2.8.6</Version>
   <Author>souru</Author>
   <InfoUrl>https://www.lotrointerface.com/downloads/info1143-Gibberish.html</InfoUrl>
   <DownloadUrl>https://www.lotrointerface.com/downloads/download1143-Gibberish</DownloadUrl>

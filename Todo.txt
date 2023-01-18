@@ -4,7 +4,6 @@ Fixes
     - iconsize in timerselection is broken after saving timer changes
     - make export-strings "nicer"
     - rework countdown
-    - iconwindow does not properly display after traittreechanged
 
 New Features
 
