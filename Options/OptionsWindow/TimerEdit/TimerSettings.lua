@@ -169,6 +169,7 @@ function TimerSettings:SaveChanges()
     data.hide_timer = self.hide_timer_cb:IsChecked()
 
     data.increment = self.increment_cb:IsChecked()
+    data.show_grey = self.grey_cb:IsChecked()
     data.use_target_entity = self.use_target_entity_cb:IsChecked()
 
     data.target_list = Utils.TargetStringToList( self.target_list_tb:GetText() )
@@ -208,6 +209,7 @@ function TimerSettings:ResetColors()
     self.target_list_lb:SetForeColor(Turbine.UI.Color.White)
     self.use_target_entity_lb:SetForeColor(Turbine.UI.Color.White)
     self.increment_lb:SetForeColor(Turbine.UI.Color.White)
+    self.grey_lb:SetForeColor(Turbine.UI.Color.White)
 
 end
 
@@ -237,6 +239,7 @@ function TimerSettings:Empty()
     self.hide_timer_cb:SetChecked(false)
     self.use_target_entity_cb:SetChecked(false)
     self.increment_cb:SetChecked(false)
+    self.grey_cb:SetChecked(false)
     self.hide_timer_cb:SetChecked(false)
     self.target_list_tb:SetText("")
     self.counter_start:SetText("")
@@ -282,6 +285,7 @@ function TimerSettings:FillInformation()
     self.hide_timer_cb:SetChecked(data.hide_timer)
 
     self.increment_cb:SetChecked(data.increment)
+    self.grey_cb:SetChecked(data.show_grey)
     self.use_target_entity_cb:SetChecked(data.use_target_entity)
 
     self.target_list_tb:SetText( Utils.TargetListToString( data.target_list ) )
@@ -707,6 +711,28 @@ function TimerSettings:Build()
     self.increment_cb:SetChecked()
     self.increment_cb.CheckedChanged = function()
         self.increment_lb:SetForeColor(Turbine.UI.Color.Orange)
+    end
+
+    row = row + 1
+
+    self.grey_lb = Turbine.UI.Label()
+    self.grey_lb:SetParent(self.background)
+    self.grey_lb:SetFont(OPTIONS_FONT)
+    self.grey_lb:SetSize(100, row_height)
+    self.grey_lb:SetPosition(collumn2, row*row_height)
+    self.grey_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
+    self.grey_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
+    self.grey_lb:SetText(L.grey)
+
+    self.grey_cb =  Turbine.UI.Lotro.CheckBox()
+	self.grey_cb:SetParent(self.background)
+    self.grey_cb:SetSize(20, 20)
+    self.grey_cb:SetFont(OPTIONS_FONT)
+    self.grey_cb:SetText("")
+    self.grey_cb:SetPosition(400 - 30, row*row_height)
+    self.grey_cb:SetChecked()
+    self.grey_cb.CheckedChanged = function()
+        self.grey_lb:SetForeColor(Turbine.UI.Color.Orange)
     end
 
     row = row + 2

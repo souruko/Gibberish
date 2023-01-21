@@ -84,6 +84,7 @@ function Item:DataChanged()
 	self:SetSize(full_width, full_height)
 	self.icon_control:SetSize(self.width, self.height)
     self.entity_control:SetSize(full_width, full_height)
+    self.grey:SetSize(self.width, self.height)
 
 	self.label_back:SetSize(self.width, self.height)
 	self.text_label:SetSize(self.width, self.height)
@@ -96,10 +97,13 @@ function Item:DataChanged()
     self.opacity2 = savedata[self.parent.index].opacity2
     --self:SetOpacity(self.opacity)
 
+    
     if self:GetWantsUpdates() == true then
         self.icon_control:SetOpacity(self.opacity)
+        self.grey:SetOpacity(self.opacity)
     else
         self.icon_control:SetOpacity(self.opacity2)
+        self.grey:SetOpacity(self.opacity2)
     end
     if self.data.use_target_entity then
         self.entity_control:SetMouseVisible(true)
@@ -125,8 +129,11 @@ function Item:ParameterChanged()
         self.icon_control:SetBackground(self.icon)
         if self.orientation then
             self.icon_control:SetSize(savedata[self.parent.index].width, savedata[self.parent.index].height)
+            self.grey:SetSize(savedata[self.parent.index].width, savedata[self.parent.index].height)
+
         else
             self.icon_control:SetSize(savedata[self.parent.index].height, savedata[self.parent.index].width)
+            self.grey:SetSize(savedata[self.parent.index].height, savedata[self.parent.index].width)
         end
     end
 
@@ -211,8 +218,25 @@ function Item:Update()
         if self.data.increment == true then
             self.timer_label:SetText(Utils.SecondsToClock( (self.duration - time_left), self.number_format))
 
+            if self.data.show_grey == true then
+
+                local grey = math.floor(time_left / self.duration * 60)
+                self.grey:SetSize(32, 32)
+                self.grey:SetBackground(GREY[61 - grey])
+                self.grey:SetStretchMode(1)
+
+            end
+
         else
             self.timer_label:SetText(Utils.SecondsToClock(time_left, self.number_format))
+
+            if self.data.show_grey == true then
+                local grey = math.floor(time_left / self.duration * 60)
+                self.grey:SetSize(32, 32)
+                self.grey:SetBackground(GREY[grey])
+                self.grey:SetStretchMode(1)
+
+            end
 
         end
         
@@ -235,15 +259,20 @@ function Item:Update()
             
                     self.icon_control:SetPosition(left, top)
                     self.icon_control:SetSize(width, height)
+                    self.grey:SetPosition(left, top)
+                    self.grey:SetSize(width, height)
                     self.icon_control:SetOpacity(self.opacity+(self.opacity2-self.opacity)*(1-(time_left/self.data.threshold)))
+                    self.grey:SetOpacity(self.opacity+(self.opacity2-self.opacity)*(1-(time_left/self.data.threshold)))
             
                     
                 else
 
                     if self.orientation then
                         self.icon_control:SetSize(savedata[self.parent.index].width, savedata[self.parent.index].height)
+                        self.grey:SetSize(savedata[self.parent.index].width, savedata[self.parent.index].height)
                     else
                         self.icon_control:SetSize(savedata[self.parent.index].height, savedata[self.parent.index].width)
+                        self.grey:SetSize(savedata[self.parent.index].height, savedata[self.parent.index].width)
                     end
                     
                 end
@@ -252,6 +281,8 @@ function Item:Update()
                 self.icon_control:SetOpacity(self.opacity)
                 self.icon_control:SetSize(self.width, self.height)
                 self.icon_control:SetPosition(0,0)
+                self.grey:SetSize(self.width, self.height)
+                self.grey:SetOpacity(self.opacity)
 
             end
 
@@ -272,6 +303,13 @@ function Item:Build()
     self.icon_control:SetParent(self)
     self.icon_control:SetMouseVisible(false)
     self.icon_control:SetZOrder(4)
+
+    self.grey = Turbine.UI.Control()
+    self.grey:SetParent(self)
+    self.grey:SetBackColorBlendMode(Turbine.UI.BlendMode.Overlay);
+    self.grey:SetBackColor(Turbine.UI.Color.Black)
+    self.grey:SetMouseVisible(false);
+    self.grey:SetZOrder(5);
 
     self.label_back = Turbine.UI.Window()
     self.label_back:SetParent(self)

@@ -192,3 +192,5 @@ L.target_list = "List of Targets"
 L.counter_start = "Counter Value"
 
 L.global_pos = "Position Global speichern"
+
+L.grey = "Visual Timer"

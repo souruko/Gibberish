@@ -25,6 +25,7 @@ function GetBaseTimer()
     data.increment       = false
     data.use_target_entity = false
     data.target_list = nil
+    data.show_grey = false
 
     return data
 

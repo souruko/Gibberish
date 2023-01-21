@@ -4,6 +4,7 @@ Fixes
     - iconsize in timerselection is broken after saving timer changes
     - make export-strings "nicer"
     - rework countdown
+    - add target list to export
 
 New Features
 
@@ -14,3 +15,7 @@ New Features
     - target morale as trigger
     - a way to add a trigger as remover for another timer
     - reset individuell windows or even timer per chat comand
+
+    - window types
+        - circular progression bar
+        - floating text without timer

@@ -3,7 +3,7 @@ command = Turbine.ShellCommand()
 
 function command:Execute( _, str )
     if str == nil or string.len( str ) == 0 then
-        Turbine.Shell.WriteLine( "Missing Argument (reset | reload).")
+        Turbine.Shell.WriteLine( "Missing Argument (reset | reload | move).")
         return
     end
 
