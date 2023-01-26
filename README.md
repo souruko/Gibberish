@@ -10,6 +10,12 @@ Lotro LUA Plugin for all the timers
 
 # ChangeLog
 
+2.8.8
+- Added new Setting for Text and Timer Position
+
+2.8.7
+- Added Bar Circel Windowtype
+
 2.8.6
 - Fixed Issue where Windows did not properly displayed effects after traitline changed
 

@@ -133,6 +133,21 @@ function Item:DataChanged()
 
     self.text_label:SetText(self.text)
 
+    local text_allignment = savedata[self.parent.index].text_allignment
+    local timer_allignment = savedata[self.parent.index].timer_allignment
+
+    if text_allignment == nil then
+        text_allignment = 1
+    end
+
+    if timer_allignment == nil then
+        timer_allignment = 5
+    end
+    
+	self.text_label:SetTextAlignment(text_allignment)
+	self.timer_label:SetTextAlignment(timer_allignment)
+
+
 end
 
 function Item:ParameterChanged()
@@ -309,9 +324,6 @@ function Item:Build()
     self.timer_label:SetParent(self.label_back)
     self.timer_label:SetMouseVisible(false)
     self.timer_label:SetFontStyle(Turbine.UI.FontStyle.Outline)
-
-	self.text_label:SetTextAlignment(Turbine.UI.ContentAlignment.TopLeft)
-	self.timer_label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleCenter)
 
 	self:ParameterChanged()
     self:DataChanged()

@@ -310,6 +310,26 @@ function WindowSettings:SaveChanges(data)
 
     end
 
+    local text_allignment = self.text_allignemt_cb:GetSelection()
+    if text_allignment ~= nil then
+        data.text_allignment = text_allignment
+        self.text_allignemt_lb:SetForeColor(Turbine.UI.Color.White)
+
+    else
+        self.text_allignemt_lb:SetForeColor(Turbine.UI.Color.Red)
+
+    end
+
+    local timer_allignment = self.timer_allignemt_cb:GetSelection()
+    if timer_allignment ~= nil then
+        data.timer_allignment = timer_allignment
+        self.timer_allignemt_lb:SetForeColor(Turbine.UI.Color.White)
+
+    else
+        self.timer_allignemt_lb:SetForeColor(Turbine.UI.Color.Red)
+
+    end
+
 
     local opacity = tonumber( self.transparency1_value:GetText() )
     if opacity ~= "" and 'number' == type(opacity) and opacity <= 1 and opacity >= 0 then
@@ -429,6 +449,16 @@ function WindowSettings:ResetToDefault_Window()
     end
     self.number_format_cb:SetSelection(data.number_format)
 
+    if self.text_allignemt_cb:GetSelection() ~= data.text_allignment then
+        self.text_allignemt_lb:SetForeColor(Turbine.UI.Color.Orange)
+    end
+    self.text_allignemt_cb:SetSelection(data.text_allignment)
+
+    if self.timer_allignemt_cb:GetSelection() ~= data.text_allignment then
+        self.timer_allignemt_lb:SetForeColor(Turbine.UI.Color.Orange)
+    end
+    self.timer_allignemt_cb:SetSelection(data.timer_allignment)
+
     if tonumber( self.transparency1_value:GetText() ) ~= data.opacity then
         self.transparency1_lb:SetForeColor(Turbine.UI.Color.Orange)
     end
@@ -520,6 +550,21 @@ function WindowSettings:FillInformation()
     self.font_cb:SetSelection(data.font)
     self.number_format_cb:SetSelection(data.number_format)
 
+    local timer_allignment = data.timer_allignment
+
+    if timer_allignment == nil then
+        timer_allignment = 5
+    end
+
+    local text_allignment = data.text_allignment
+
+    if text_allignment == nil then
+        text_allignment = 1
+    end
+
+    self.timer_allignemt_cb:SetSelection(timer_allignment)
+    self.text_allignemt_cb:SetSelection(text_allignment)
+
     self.transparency1_value:SetText(data.opacity)
     self.transparency1_bar:SetValue(data.opacity * 100)
     self.transparency2_value:SetText(data.opacity2)
@@ -570,6 +615,8 @@ function WindowSettings:FillEmpty()
 
     self.font_cb:SetSelection(nil)
     self.number_format_cb:SetSelection(nil)
+    self.text_allignemt_cb:SetSelection(nil)
+    self.timer_allignemt_cb:SetSelection(nil)
 
     self.transparency1_bar:SetValue(50)
     self.transparency1_value:SetText("")
@@ -1086,6 +1133,57 @@ function WindowSettings:Build()
         self.number_format_cb:AddItem(v, k)
     end
 
+    row = row + 1
+
+    self.text_allignemt_lb = Turbine.UI.Label()
+    self.text_allignemt_lb:SetParent(self.background)
+    self.text_allignemt_lb:SetFont(OPTIONS_FONT)
+    self.text_allignemt_lb:SetSize(150, row_height)
+    self.text_allignemt_lb:SetPosition(SPACER, row*row_height)
+    self.text_allignemt_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
+    self.text_allignemt_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
+    self.text_allignemt_lb:SetText(L.text_allignment)
+
+    self.text_allignemt_cb = LabelledComboBox(nil, nil, 160)
+	self.text_allignemt_cb:SetParent(self.background)
+    self.text_allignemt_cb:SetPosition(350 -160, row * row_height)
+	self.text_allignemt_cb:AddItem("Top Left", 1);
+	self.text_allignemt_cb:AddItem("Top Center", 2);
+	self.text_allignemt_cb:AddItem("Top Right", 3);
+	self.text_allignemt_cb:AddItem("Middle Left", 4);
+	self.text_allignemt_cb:AddItem("Middle Center", 5);
+	self.text_allignemt_cb:AddItem("Middle Right", 6);
+	self.text_allignemt_cb:AddItem("Bottom Left", 7);
+	self.text_allignemt_cb:AddItem("Bottom Center", 8);
+    self.text_allignemt_cb:AddItem("Bottom Right", 9);
+    
+
+    row = row + 1
+
+    self.timer_allignemt_lb = Turbine.UI.Label()
+    self.timer_allignemt_lb:SetParent(self.background)
+    self.timer_allignemt_lb:SetFont(OPTIONS_FONT)
+    self.timer_allignemt_lb:SetSize(150, row_height)
+    self.timer_allignemt_lb:SetPosition(SPACER, row*row_height)
+    self.timer_allignemt_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
+    self.timer_allignemt_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
+    self.timer_allignemt_lb:SetText(L.timer_allignment)
+
+    self.timer_allignemt_cb = LabelledComboBox(nil, nil, 160)
+	self.timer_allignemt_cb:SetParent(self.background)
+    self.timer_allignemt_cb:SetPosition(350 -160, row * row_height)
+	self.timer_allignemt_cb:AddItem("TopLeft", 1);
+	self.timer_allignemt_cb:AddItem("TopCenter", 2);
+	self.timer_allignemt_cb:AddItem("TopRight", 3);
+	self.timer_allignemt_cb:AddItem("MiddleLeft", 4);
+	self.timer_allignemt_cb:AddItem("MiddleCenter", 5);
+	self.timer_allignemt_cb:AddItem("MiddleRight", 6);
+	self.timer_allignemt_cb:AddItem("BottomLeft", 7);
+	self.timer_allignemt_cb:AddItem("BottomCenter", 8);
+	self.timer_allignemt_cb:AddItem("BottomRight", 9);
+
+
+
     row = row + 2
 
     self.transparency1_lb = Turbine.UI.Label()
@@ -1315,6 +1413,10 @@ function WindowSettings:Build()
 
         elseif sender == self:GetParent().number_format_cb then
             self:GetParent().number_format_lb:SetForeColor(Turbine.UI.Color.Orange)
+        elseif sender == self:GetParent().text_allignemt_cb then
+            self:GetParent().text_allignemt_lb:SetForeColor(Turbine.UI.Color.Orange)
+        elseif sender == self:GetParent().timer_allignemt_cb then
+            self:GetParent().timer_allignemt_lb:SetForeColor(Turbine.UI.Color.Orange)
         end
     
     end

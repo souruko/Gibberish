@@ -117,6 +117,20 @@ function Item:DataChanged()
 
     self.text_label:SetText(self.text)
 
+    local text_allignment = savedata[self.parent.index].text_allignment
+    local timer_allignment = savedata[self.parent.index].timer_allignment
+
+    if text_allignment == nil then
+        text_allignment = 1
+    end
+
+    if timer_allignment == nil then
+        timer_allignment = 5
+    end
+    
+	self.text_label:SetTextAlignment(text_allignment)
+	self.timer_label:SetTextAlignment(timer_allignment)
+
 end
 
 function Item:ParameterChanged()

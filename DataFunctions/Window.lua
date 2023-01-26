@@ -45,6 +45,10 @@ function AddWindow(name, type)
     savedata[index].orientation                 = optionsdata.default_visual[type].orientation
     savedata[index].overlay                     = optionsdata.default_visual[type].overlay
     savedata[index].reset_on_target_change      = optionsdata.default_visual[type].reset_on_target_change
+    savedata[index].text_allignment             = optionsdata.default_visual[type].text_allignment
+    savedata[index].timer_allignment            = optionsdata.default_visual[type].timer_allignment
+
+
 
     savedata[index][TRIGGER_TYPE.Effect_Self]           = {}
     savedata[index][TRIGGER_TYPE.Effect_Group]           = {}
@@ -122,6 +126,8 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Bar_ListBox].orientation             = true
         optionsdata.default_visual[WINDOW_TYPE.Bar_ListBox].overlay                 = false
         optionsdata.default_visual[WINDOW_TYPE.Bar_ListBox].reset_on_target_change  = false
+        optionsdata.default_visual[WINDOW_TYPE.Bar_ListBox].text_allignment         = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_ListBox].timer_allignment        = 1
     
     elseif window_type == WINDOW_TYPE.Bar_Window then
 
@@ -160,6 +166,9 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Bar_Window].orientation             = true
         optionsdata.default_visual[WINDOW_TYPE.Bar_Window].overlay                 = false
         optionsdata.default_visual[WINDOW_TYPE.Bar_Window].reset_on_target_change  = false
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Window].text_allignment         = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Window].timer_allignment        = 1
+    
 
     elseif window_type == WINDOW_TYPE.Icon_ListBox then
 
@@ -198,6 +207,9 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Icon_ListBox].orientation             = true
         optionsdata.default_visual[WINDOW_TYPE.Icon_ListBox].overlay                 = false
         optionsdata.default_visual[WINDOW_TYPE.Icon_ListBox].reset_on_target_change  = false
+        optionsdata.default_visual[WINDOW_TYPE.Icon_ListBox].text_allignment         = 1
+        optionsdata.default_visual[WINDOW_TYPE.Icon_ListBox].timer_allignment        = 5
+
 
     elseif window_type == WINDOW_TYPE.Icon_Window then
 
@@ -236,6 +248,9 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Icon_Window].orientation             = true
         optionsdata.default_visual[WINDOW_TYPE.Icon_Window].overlay                 = false
         optionsdata.default_visual[WINDOW_TYPE.Icon_Window].reset_on_target_change  = false
+        optionsdata.default_visual[WINDOW_TYPE.Icon_Window].text_allignment         = 1
+        optionsdata.default_visual[WINDOW_TYPE.Icon_Window].timer_allignment        = 5
+    
 
     elseif window_type == WINDOW_TYPE.Count_Down then
 
@@ -274,6 +289,9 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Count_Down].orientation             = true
         optionsdata.default_visual[WINDOW_TYPE.Count_Down].overlay                 = false
         optionsdata.default_visual[WINDOW_TYPE.Count_Down].reset_on_target_change  = false
+        optionsdata.default_visual[WINDOW_TYPE.Count_Down].text_allignment         = 1
+        optionsdata.default_visual[WINDOW_TYPE.Count_Down].timer_allignment        = 1
+    
 
     elseif window_type == WINDOW_TYPE.Bar_Circel then
 
@@ -307,11 +325,14 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].font_color_2.B          = 1
         optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].font                    = 23
         optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].opacity                 = 1
-        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].opacity2                 = 0
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].opacity2                 = 0.3
         optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].ascending               = false
         optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].orientation             = true
         optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].overlay                 = false
         optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].reset_on_target_change  = false
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].text_allignment         = 2
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].timer_allignment        = 8
+    
 
     end
 

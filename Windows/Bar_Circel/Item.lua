@@ -115,20 +115,17 @@ function Item:DataChanged()
     self.bar_back:SetSize(width , height)
     self.bar_back:SetPosition(0, 0)
 
-    local label_spacing = height * 0.12
+    local label_spacing = height * 0.03
     self.label_back:SetSize(width , height - label_spacing * 2)
     self.label_back:SetPosition(0, label_spacing)
     self.text_label:SetSize(width , height - label_spacing * 2)
     self.timer_label:SetSize(width, height - label_spacing * 2)
 
-    self.text_label:SetTextAlignment(Turbine.UI.ContentAlignment.BottomCenter)
-    self.timer_label:SetTextAlignment(Turbine.UI.ContentAlignment.TopCenter)
-
     self.background:SetSize(width, height)
     self.background.nativeWidth, self.background.nativeHeight = self.background:GetSize()
 
-    self.background_color = Utils.ColorFix(savedata[self.parent.index].back_color)
-    self.background:SetBackColor(self.background_color)
+    self.bar_color = Utils.ColorFix(savedata[self.parent.index].bar_color)
+    self.background:SetBackColor(Utils.ColorFix(savedata[self.parent.index].back_color))
     self.background:SetBackground(CIRCEL[100])
     self.background:SetStretchMode(2)
 
@@ -160,6 +157,19 @@ function Item:DataChanged()
     self.text_label:SetText(self.text)
 
 
+    local text_allignment = savedata[self.parent.index].text_allignment
+    local timer_allignment = savedata[self.parent.index].timer_allignment
+
+    if text_allignment == nil then
+        text_allignment = 8
+    end
+
+    if timer_allignment == nil then
+        timer_allignment = 2
+    end
+    
+	self.text_label:SetTextAlignment(text_allignment)
+	self.timer_label:SetTextAlignment(timer_allignment)
 
 
 end
@@ -200,7 +210,7 @@ function Item:ShutDown()
     self.bar_back:SetVisible(false)
     self.label_back:SetVisible(false)
 
-    -- Trigger.Timer.CheckForWaitingTimerEnd(savedata[self.parent.index].id.."wid_"..self.data.id.."tid", self.data)
+    Trigger.Timer.CheckForWaitingTimerEnd(savedata[self.parent.index].id.."wid_"..self.data.id.."tid", self.data)
 
     self.parent:ItemRemove(self)
 
@@ -241,7 +251,7 @@ function Item:Update()
                 self.bar:SetRotation({x = 0, y = 0, z = 180})
         
             end
-            
+
         else
             self.timer_label:SetText(Utils.SecondsToClock(time_left, self.number_format))
 
@@ -251,11 +261,11 @@ function Item:Update()
             self.bar:SetStretchMode(2)
 
                 
-    if self.orientation == false then
+            if self.orientation == false then
 
-        self.bar:SetRotation({x = 0, y = 0, z = 180})
+                self.bar:SetRotation({x = 0, y = 0, z = 180})
 
-    end
+            end
 
             if self.orientation then
                 -- self.bar:SetWidth(time_left/self.duration*self.max_bar)
@@ -267,37 +277,49 @@ function Item:Update()
 
 
 
-        -- if self.data.use_threshold == true then
+        if self.data.use_threshold == true then
 
-        --     if time_left <= self.data.threshold then
+            if time_left <= self.data.threshold then
 
-        --         if self.first_threshold_frame == true then
-        --             self.first_threshold_frame = false
-        --             Trigger.Timer.CheckForWaitingTimerThreshold(savedata[self.parent.index].id.."wid_"..self.data.id.."tid", self.data)
-        --         end
+                if self.first_threshold_frame == true then
+                    self.first_threshold_frame = false
+                    Trigger.Timer.CheckForWaitingTimerThreshold(savedata[self.parent.index].id.."wid_"..self.data.id.."tid", self.data)
+                end
 
-        --         if self.data.flashing == true then
-        --             local value
-        --             local flash_value = time_left * self.data.flashing_multi
-        --             if math.floor(flash_value) % 2 == 0 then
-        --                 value = 1-(flash_value-math.floor(flash_value))
-        --             else
-        --                 value = (flash_value-math.floor(flash_value))
-        --             end
+                if self.data.flashing == true then
+                    local value
+                    local flash_value = time_left * self.data.flashing_multi
+                    if math.floor(flash_value) % 2 == 0 then
+                        value = 1-(flash_value-math.floor(flash_value))
+                    else
+                        value = (flash_value-math.floor(flash_value))
+                    end
         
-        --             self.background:SetBackColor(Turbine.UI.Color(1, value, value))
-        --         else
-        --             self.background:SetBackColor(Turbine.UI.Color.Red)
-        --         end
+                    self.bar:SetBackColor(Turbine.UI.Color(1, value, value))
+                else
+                    self.bar:SetBackColor(Turbine.UI.Color.Red)
+                end
                 
-        --     else
-        --         self.background:SetBackColor(self.background_color)
-        --     end
+            else
+                self.bar:SetBackColor(self.bar_color)
+            end
 
-        -- end
+        end
 
 	else
 		self.timer_label:SetText("")
+
+        local circel_id = 100
+
+        self.bar:SetBackground(CIRCEL[circel_id])
+        self.bar:SetStretchMode(2)
+
+            
+        if self.orientation == false then
+
+            self.bar:SetRotation({x = 0, y = 0, z = 180})
+
+        end
 		-- self.bar:SetWidth(0)
 	end
 

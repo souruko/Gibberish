@@ -3,7 +3,7 @@
 	<Information>
 		<Name>Gibberish</Name>
 		<Author>Souru</Author>
-		<Version>2.8.6</Version>
+		<Version>2.8.7</Version>
 		<Description>/gibberish [options] [reload] [reset] [collection] [move]</Description>
 	</Information>
 	<Package>Gibberish.Main</Package>
