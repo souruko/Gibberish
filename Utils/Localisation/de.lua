@@ -29,12 +29,13 @@ TEXTMODIFIER[2] = "Token"
 TEXTMODIFIER[3] = "Benutzerdefinierter Text"
 TEXTMODIFIER[4] = "Zielname"
 
+
 WINDOW_TYPE[1] = "Leistenfeld"
 WINDOW_TYPE[2] = "Leistenfenster"
 WINDOW_TYPE[3] = "Symbolfeld"
 WINDOW_TYPE[4] = "Symbolfenster"
 WINDOW_TYPE[5] = "Add Anzahl"
-
+WINDOW_TYPE[6] = "Bar Circel"
 
 TRIGGER_TYPE[1] = "Effekt Selbst"
 TRIGGER_TYPE[2] = "Effekt Gruppe"

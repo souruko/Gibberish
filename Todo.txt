@@ -5,6 +5,7 @@ Fixes
     - make export-strings "nicer"
     - rework countdown
     - add target list to export
+    - add grey to export
 
 New Features
 

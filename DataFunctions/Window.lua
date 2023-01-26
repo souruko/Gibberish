@@ -275,6 +275,44 @@ function ResetDefaultVisual(window_type)
         optionsdata.default_visual[WINDOW_TYPE.Count_Down].overlay                 = false
         optionsdata.default_visual[WINDOW_TYPE.Count_Down].reset_on_target_change  = false
 
+    elseif window_type == WINDOW_TYPE.Bar_Circel then
+
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel]                         = {}
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].width                   = 300
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].height                  = 300
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].left                    = 0.1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].top                     = 0.1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].frame                   = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].spacing                 = 2
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].number_format           = NUMBER_FORMAT.Minutes
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].frame_color             = {}
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].frame_color.R           = 0
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].frame_color.G           = 0
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].frame_color.B           = 0
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].back_color              = {}
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].back_color.R            = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].back_color.G            = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].back_color.B            = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].bar_color               = {}
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].bar_color.R             = 0
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].bar_color.G             = 0
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].bar_color.B             = 0
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].font_color_1            = {}
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].font_color_1.R          = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].font_color_1.G          = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].font_color_1.B          = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].font_color_2            = {}
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].font_color_2.R          = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].font_color_2.G          = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].font_color_2.B          = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].font                    = 23
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].opacity                 = 1
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].opacity2                 = 0
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].ascending               = false
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].orientation             = true
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].overlay                 = false
+        optionsdata.default_visual[WINDOW_TYPE.Bar_Circel].reset_on_target_change  = false
+
     end
 
 end

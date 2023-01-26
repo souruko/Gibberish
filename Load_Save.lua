@@ -310,6 +310,11 @@ if Turbine.PluginData.Load(Turbine.DataScope.Account, "gibberish_global_options_
         DataFunctions.ResetDefaultVisual(WINDOW_TYPE.Count_Down)
     end
 
+    --fix new window default
+    if optionsdata.default_visual[WINDOW_TYPE.Bar_Circel] == nil then
+        DataFunctions.ResetDefaultVisual(WINDOW_TYPE.Bar_Circel)
+    end
+
 else
 
     optionsdata.default_visual = {}
@@ -365,6 +370,7 @@ else
     DataFunctions.ResetDefaultVisual(WINDOW_TYPE.Icon_ListBox)
     DataFunctions.ResetDefaultVisual(WINDOW_TYPE.Icon_Window)
     DataFunctions.ResetDefaultVisual(WINDOW_TYPE.Count_Down)
+    DataFunctions.ResetDefaultVisual(WINDOW_TYPE.Bar_Circel)
 
 end
 

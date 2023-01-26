@@ -390,6 +390,8 @@ function Window:InterpreteWindow(text, old)
                 list["type"] = WINDOW_TYPE.Icon_Window
             elseif list["type"] == "Count_Down" then
                 list["type"] = WINDOW_TYPE.Count_Down
+            elseif list["type"] == "Bar_Circel" then
+                list["type"] = WINDOW_TYPE.Bar_Circel
             else
                 list["type"] = WINDOW_TYPE.Bar_ListBox
             end

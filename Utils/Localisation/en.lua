@@ -34,6 +34,7 @@ WINDOW_TYPE[2] = "Bar Window"
 WINDOW_TYPE[3] = "Icon ListBox"
 WINDOW_TYPE[4] = "Icon Window"
 WINDOW_TYPE[5] = "Count Down"
+WINDOW_TYPE[6] = "Bar Circel"
 
 TRIGGER_TYPE[1] = "Effect Self"
 TRIGGER_TYPE[2] = "Effect Group"

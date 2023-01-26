@@ -85,6 +85,10 @@ function Load(index)
 
             windows[index] = Count_Down.Window(index)
 
+        elseif savedata[index].type == WINDOW_TYPE.Bar_Circel then
+
+            windows[index] = Bar_Circel.Window(index)
+
         else
             Turbine.Shell.WriteLine("Window-Type ERORR!")
         end
