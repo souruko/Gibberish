@@ -13,6 +13,10 @@ function Item:Constructor(parent, data, key)
     self.endtime = 0
     self.first_threshold_frame = true
 
+    self.animation_step = 1
+    self.last_animation = 1
+
+
     self.text = data.text
     self.icon = data.icon
 
@@ -85,6 +89,10 @@ function Item:DataChanged()
 	self.icon_control:SetSize(self.width, self.height)
     self.entity_control:SetSize(full_width, full_height)
     self.grey:SetSize(self.width, self.height)
+
+    self.animation:SetSize(self.width, self.height)
+    self.animation.nativeWidth, self.animation.nativeHeight = self.animation:GetSize()
+
 
 	self.label_back:SetSize(self.width, self.height)
 	self.text_label:SetSize(self.width, self.height)
@@ -195,6 +203,7 @@ function Item:SetActiv(bool)
         self.icon_control:SetPosition(0,0)
         self.timer_label:SetText("")
         self.text_label:SetText("")
+        self.animation:SetBackground(NO_ANIMATION)
 
     end
 
@@ -265,19 +274,61 @@ function Item:Update()
 
                 if self.data.flashing == true then
 
-                    local width = (time_left / self.data.threshold * (self.data.flashing_multi - 1) + 1) * self.width
-                    local height = (time_left / self.data.threshold * (self.data.flashing_multi - 1) + 1) * self.height
+                    if self.data.flashing_animation == nil or self.data.flashing_animation == ANIMATION_TYPE.Flashing then
 
-                    local left = (time_left / self.data.threshold * (self.data.flashing_multi - 1)) * self.width * (-1)/2
-                    local top = (time_left / self.data.threshold * (self.data.flashing_multi - 1)) * self.height * (-1)/2
-            
-                    self.icon_control:SetPosition(left, top)
-                    self.icon_control:SetSize(width, height)
-                    self.grey:SetPosition(left, top)
-                    self.grey:SetSize(width, height)
+                        local width = (time_left / self.data.threshold * (self.data.flashing_multi - 1) + 1) * self.width
+                        local height = (time_left / self.data.threshold * (self.data.flashing_multi - 1) + 1) * self.height
+
+                        local left = (time_left / self.data.threshold * (self.data.flashing_multi - 1)) * self.width * (-1)/2
+                        local top = (time_left / self.data.threshold * (self.data.flashing_multi - 1)) * self.height * (-1)/2
+                
+                        self.icon_control:SetPosition(left, top)
+                        self.icon_control:SetSize(width, height)
+                        self.grey:SetSize(width, height)
+                        self.grey:SetPosition(left, top)
+
+                    elseif self.data.flashing_animation == ANIMATION_TYPE.Dotted_Border then
+
+                        
+                        if self.last_animation < gt then
+
+                            self.animation:SetSize(32, 32)
+                            self.animation:SetBackground(DOTTED_BORDER[self.animation_step])
+                            self.animation:SetStretchMode(1)
+                            self.animation:SetSize(self:GetSize())
+
+                            self.animation_step = self.animation_step + 1
+
+                            if self.animation_step > 13 then
+                                self.animation_step = 1
+                            end
+
+                            self.last_animation = gt + (0.2/self.data.flashing_multi)
+                        end
+
+                    elseif self.data.flashing_animation == ANIMATION_TYPE.Activation_Border then
+
+                        if self.last_animation < gt then
+
+                            self.animation:SetSize(32, 32)
+                            self.animation:SetBackground(ACTIVATION_BORDER[self.animation_step])
+                            self.animation:SetStretchMode(1)
+                            self.animation:SetSize(self:GetSize())
+                        
+
+                            self.animation_step = self.animation_step + 1
+
+                            if self.animation_step > 9 then
+                                self.animation_step = 1
+                            end
+
+                            self.last_animation = gt + (0.2/self.data.flashing_multi)
+                        end
+
+                    end
+
                     self.icon_control:SetOpacity(self.opacity+(self.opacity2-self.opacity)*(1-(time_left/self.data.threshold)))
-                    self.grey:SetOpacity(self.opacity+(self.opacity2-self.opacity)*(1-(time_left/self.data.threshold)))
-            
+
                     
                 else
 
@@ -318,10 +369,15 @@ function Item:Build()
     self.icon_control:SetMouseVisible(false)
     self.icon_control:SetZOrder(4)
 
+    self.animation = Turbine.UI.Control()
+    self.animation:SetParent(self)
+    self.animation:SetBackColorBlendMode(Turbine.UI.BlendMode.Overlay);
+    self.animation:SetMouseVisible(false);
+    self.animation:SetZOrder(6);
+
     self.grey = Turbine.UI.Control()
     self.grey:SetParent(self)
     self.grey:SetBackColorBlendMode(Turbine.UI.BlendMode.Overlay);
-    self.grey:SetBackColor(Turbine.UI.Color.Black)
     self.grey:SetMouseVisible(false);
     self.grey:SetZOrder(5);
 

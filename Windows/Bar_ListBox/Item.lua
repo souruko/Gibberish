@@ -16,6 +16,9 @@ function Item:Constructor(parent, token, key, start_time, duration, icon, text, 
     self.first_threshold_frame = true
     self.entity = entity
 
+    self.animation_step = 1
+    self.last_animation = 1
+
     self.text = text
     self.icon = icon
 
@@ -114,6 +117,10 @@ function Item:DataChanged()
         self.frame:SetSize(full_width, height + (2*frame))
         self.background:SetSize(self.max_bar, height)
         self.background:SetPosition(height + (2*frame), frame)
+
+        self.animation:SetSize(full_width, height + (2*frame))
+        self.animation.nativeWidth, self.animation.nativeHeight = self.animation:GetSize()
+    
     
         self.bar_back:SetSize(self.max_bar , height)
         self.bar_back:SetPosition(height + (2*frame), frame)
@@ -275,15 +282,60 @@ function Item:Update()
                 end
 
                 if self.data.flashing == true then
-                    local value
-                    local flash_value = time_left * self.data.flashing_multi
-                    if math.floor(flash_value) % 2 == 0 then
-                        value = 1-(flash_value-math.floor(flash_value))
-                    else
-                        value = (flash_value-math.floor(flash_value))
+
+                    if self.data.flashing_animation == nil or self.data.flashing_animation == ANIMATION_TYPE.Flashing then
+
+
+                        local value
+                        local flash_value = time_left * self.data.flashing_multi
+                        if math.floor(flash_value) % 2 == 0 then
+                            value = 1-(flash_value-math.floor(flash_value))
+                        else
+                            value = (flash_value-math.floor(flash_value))
+                        end
+            
+                        self.background:SetBackColor(Turbine.UI.Color(1, value, value))
+
+                    elseif self.data.flashing_animation == ANIMATION_TYPE.Dotted_Border then
+
+                        if self.last_animation < gt then
+
+                            self.animation:SetSize(32, 32)
+                            self.animation:SetBackground(DOTTED_BORDER[self.animation_step])
+                            self.animation:SetStretchMode(1)
+                            self.animation:SetSize(self.frame:GetSize())
+
+                            self.animation_step = self.animation_step + 1
+
+                            if self.animation_step > 13 then
+                                self.animation_step = 1
+                            end
+
+                            self.last_animation = gt + (0.2/self.data.flashing_multi)
+                        end
+
+                    elseif self.data.flashing_animation == ANIMATION_TYPE.Activation_Border then
+
+                        if self.last_animation < gt then
+
+                            self.animation:SetSize(32, 32)
+                            self.animation:SetBackground(ACTIVATION_BORDER[self.animation_step])
+                            self.animation:SetStretchMode(1)
+                            self.animation:SetSize(self.frame:GetSize())
+                        
+
+                            self.animation_step = self.animation_step + 1
+
+                            if self.animation_step > 9 then
+                                self.animation_step = 1
+                            end
+
+                            self.last_animation = gt + (0.2/self.data.flashing_multi)
+                        end
+
+
                     end
-        
-                    self.background:SetBackColor(Turbine.UI.Color(1, value, value))
+
                 else
                     self.background:SetBackColor(Turbine.UI.Color.Red)
                 end
@@ -316,6 +368,13 @@ function Item:Build()
     self.frame:SetParent(self)
     self.frame:SetMouseVisible(false)
     self.frame:SetZOrder(2)
+
+    self.animation = Turbine.UI.Control()
+    self.animation:SetParent(self.frame)
+    -- self.animation:SetBackColorBlendMode(Turbine.UI.BlendMode.Overlay);
+    self.animation:SetMouseVisible(false);
+    -- self.animation:SetZOrder(6);
+
     self.background = Turbine.UI.Control()
     self.background:SetParent(self.frame)
     self.background:SetMouseVisible(false)

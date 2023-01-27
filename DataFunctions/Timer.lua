@@ -15,6 +15,7 @@ function GetBaseTimer()
     data.use_threshold   = true
     data.flashing_multi  = 2
     data.flashing        = true
+    data.flashing_animation = 1
     data.loop            = false
     data.reset           = false
     data.unique          = false

@@ -55,6 +55,10 @@ TRIGGER_TYPE.short[6] = "TE"
 TRIGGER_TYPE.short[7] = "TS"
 TRIGGER_TYPE.short[8] = "TT"
 
+ANIMATION_TYPE[1] = "Blinking"
+ANIMATION_TYPE[2] = "Dotted Border"
+ANIMATION_TYPE[3] = "Activation Border"
+
 L.reset = "Reset"
 L.reload = "Reload"
 L.move_windows = "Move Windows"

@@ -140,6 +140,13 @@ function TimerSettings:SaveChanges()
     data.text = self.text_tb:GetText()
     self.text_lb:SetForeColor(Turbine.UI.Color.White)
 
+    local ani = self.animation_cb:GetSelection()
+    if ani ~= nil then
+        data.flashing_animation = ani
+    else
+        data.flashing_animation = ANIMATION_TYPE.Flashing
+    end
+
     local icon_id = self.icon_tb:GetText()
     if icon_id == "" then
         data.icon = nil
@@ -229,6 +236,7 @@ function TimerSettings:Empty()
 
     self.flashing_cb:SetChecked(false)
     self.flashing_tb:SetText("")
+    self.animation_cb:SetSelection(nil)
 
     self.unique_cb:SetChecked(false)
     self.reset_cb:SetChecked(false)
@@ -275,6 +283,7 @@ function TimerSettings:FillInformation()
 
     self.flashing_cb:SetChecked(data.flashing)
     self.flashing_tb:SetText(data.flashing_multi)
+    self.animation_cb:SetSelection(data.flashing_animation)
 
     self.unique_cb:SetChecked(data.unique)
     self.loop_cb:SetChecked(data.loop)
@@ -431,7 +440,7 @@ function TimerSettings:Build()
         self.icon_lb:SetForeColor(Turbine.UI.Color.Orange)
     end
 
-    row = row + 2
+    row = row + 1
 
     self.time_lb = Turbine.UI.Label()
     self.time_lb:SetParent(self.background)
@@ -532,6 +541,16 @@ function TimerSettings:Build()
     self.flashing_tb.TextChanged = function()
         self.flashing_cb:SetForeColor(Turbine.UI.Color.Orange)
     end
+
+    row = row + 1
+
+    self.animation_cb = LabelledComboBox(nil, nil, 160)
+	self.animation_cb:SetParent(self.background)
+    self.animation_cb:SetPosition(400 - 170, row * row_height)
+    for k,v in ipairs(ANIMATION_TYPE) do
+        self.animation_cb:AddItem(v, k)
+    end
+
 
     row = row + 2
 
