@@ -6,8 +6,8 @@ Fixes
     - rework countdown
     - add target list to export
     - add grey to export
-    - add multiple timer to the same circel
     - add timer/text allignment to export
+    - add multiple timer to the same circel
 
 New Features
 
@@ -18,7 +18,6 @@ New Features
     - target morale as trigger
     - a way to add a trigger as remover for another timer
     - reset individuell windows or even timer per chat comand
-    - text/timer position as option
 
     - window types
         - floating text without timer

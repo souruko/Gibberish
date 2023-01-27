@@ -123,17 +123,14 @@ function Item:DataChanged()
 
     self.background:SetSize(width, height)
     self.background.nativeWidth, self.background.nativeHeight = self.background:GetSize()
-
-    self.bar_color = Utils.ColorFix(savedata[self.parent.index].bar_color)
-    self.background:SetBackColor(Utils.ColorFix(savedata[self.parent.index].back_color))
+    self.background_color = Utils.ColorFix(savedata[self.parent.index].back_color)
+    self.background:SetBackColor(self.background_color)
     self.background:SetBackground(CIRCEL[100])
     self.background:SetStretchMode(2)
-
-    self.background.nativeWidth, self.background.nativeHeight = self.background:GetSize()
     
     self.bar:SetSize(width , height)
     self.bar.nativeWidth, self.bar.nativeHeight = self.bar:GetSize()
-
+    self.bar_color = Utils.ColorFix(savedata[self.parent.index].bar_color)
     self.bar:SetBackColor(Utils.ColorFix(savedata[self.parent.index].bar_color))
 
     self.text_label:SetForeColor(Utils.ColorFix(savedata[self.parent.index].font_color_2))
@@ -336,10 +333,11 @@ function Item:Build()
     -- self.icon_control:SetMouseVisible(false)
     -- self.icon_control:SetZOrder(4)
 
-    self.background = Turbine.UI.Control()
+    self.background = Turbine.UI.Window()
     self.background:SetParent(self)
+    self.background:SetBackColorBlendMode(Turbine.UI.BlendMode.Overlay)
+    self.background:SetVisible(true)
     self.background:SetMouseVisible(false)
-    self.background:SetBackColorBlendMode(Turbine.UI.BlendMode.Color)
 
     self.bar_back = Turbine.UI.Window()
     self.bar_back:SetParent(self)
@@ -348,7 +346,7 @@ function Item:Build()
 
     self.bar = Turbine.UI.Window()
     self.bar:SetParent(self.bar_back)
-    self.bar:SetBackColorBlendMode(Turbine.UI.BlendMode.Color)
+    self.bar:SetBackColorBlendMode(Turbine.UI.BlendMode.Overlay)
     self.bar:SetVisible(true)
     self.bar:SetMouseVisible(false)
 
