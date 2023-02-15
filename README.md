@@ -10,6 +10,9 @@ Lotro LUA Plugin for all the timers
 
 # ChangeLog
 
+2.8.11
+- Fixed Export for alot of the new attributes (target list still missing)
+
 2.8.10
 - Added more Flashing Animations
 - Fixed Border Position and Dotted Border Color 

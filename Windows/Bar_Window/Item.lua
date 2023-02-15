@@ -78,6 +78,8 @@ function Item:UpdateParameter(start_time, duration, icon, text, key, entity)
 
     self.text_label:SetText(self.text)
     self.entity_control:SetEntity(entity)
+
+    self.animation:SetBackground(NO_ANIMATION)
     
     --self:ParameterChanged()
 

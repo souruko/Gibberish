@@ -123,7 +123,8 @@ function Window:WindowToString(window_data)
     text = text.."overlay~="..tostring(window_data.overlay)..";\n"
     text = text.."reset_on_target_change~="..tostring(window_data.reset_on_target_change)..";\n"
     text = text.."trigger_id~="..tostring(window_data.trigger_id)..";\n"
-
+    text = text.."text_allignment~="..tostring(window_data.text_allignment)..";\n"
+    text = text.."timer_allignment~="..tostring(window_data.timer_allignment)..";\n"
 
     text = text.."=== window end ===\n"
 
@@ -173,6 +174,10 @@ function Window:TimerToString(timer_data, type)
     text = text.."hide_timer~="..tostring(timer_data.hide_timer)..";\n"
     text = text.."sort_index~="..tostring(timer_data.sort_index)..";\n"
     text = text.."counter_start~="..tostring(timer_data.counter_start)..";\n"
+    text = text.."increment~="..tostring(timer_data.increment)..";\n"
+    text = text.."use_target_entity~="..tostring(timer_data.use_target_entity)..";\n"
+    text = text.."show_grey~="..tostring(timer_data.show_grey)..";\n"
+    text = text.."flashing_animation~="..tostring(timer_data.flashing_animation)..";\n"
 
     return text
 
@@ -438,9 +443,12 @@ function Window:InterpreteWindow(text, old)
     if list["trigger_id"] ~= nil then
         list["trigger_id"] = tonumber(list["trigger_id"])
     end
-    -- if list["id"] ~= nil then
-    --     list["id"] = tonumber(list["id"])
-    -- end
+    if list["text_allignment"] ~= nil then
+        list["text_allignment"] = tonumber(list["text_allignment"])
+    end
+    if list["timer_allignment"] ~= nil then
+        list["timer_allignment"] = tonumber(list["timer_allignment"])
+    end
 
 
     return list
@@ -522,9 +530,12 @@ function Window:ConvertWindow(text, old)
     if window_info_list["trigger_id"] ~= nil then
         savedata[window_index].trigger_id = window_info_list["trigger_id"]
     end
-    -- if window_info_list["id"] ~= nil then
-    --     savedata[window_index].id = window_info_list["id"]
-    -- end
+    if window_info_list["text_allignment"] ~= nil then
+        savedata[window_index].text_allignment = window_info_list["text_allignment"]
+    end
+    if window_info_list["timer_allignment"] ~= nil then
+        savedata[window_index].timer_allignment = window_info_list["timer_allignment"]
+    end
 
     text = Utils.split(text,  ";=== window end ===")[2]
     self:ConvertTimer(text, window_index, old)
@@ -538,7 +549,7 @@ function Window:ConvertTimer(text, window_index, old)
     local splitted_text  = Utils.split(text, "=== trigger ===")
 
     for index, timer_text in pairs(splitted_text) do
---Turbine.Shell.WriteLine(timer_text)
+
         if timer_text ~= "" then
 
             local timer_info_list = self:InterpreteTimer(timer_text, old)
@@ -606,6 +617,20 @@ function Window:ConvertTimer(text, window_index, old)
             if timer_info_list["counter_start"] ~= nil then
                 savedata[window_index][timer_info_list.type][timer_index].counter_start = timer_info_list["counter_start"]
             end
+
+            if timer_info_list["increment"] ~= nil then
+                savedata[window_index][timer_info_list.type][timer_index].increment = timer_info_list["increment"]
+            end
+            if timer_info_list["use_target_entity"] ~= nil then
+                savedata[window_index][timer_info_list.type][timer_index].use_target_entity = timer_info_list["use_target_entity"]
+            end
+            if timer_info_list["flashing_animation"] ~= nil then
+                savedata[window_index][timer_info_list.type][timer_index].flashing_animation = timer_info_list["flashing_animation"]
+            end
+            if timer_info_list["show_grey"] ~= nil then
+                savedata[window_index][timer_info_list.type][timer_index].show_grey = timer_info_list["show_grey"]
+            end
+
 
         end
 
@@ -701,6 +726,22 @@ function Window:InterpreteTimer(text, old)
 
     if list["counter_start"] ~= nil then
         list["counter_start"] = tonumber(list["counter_start"])
+    end
+
+    if list["increment"] ~= nil then
+        list["increment"] = Utils.StringToBool(list["increment"])
+    end
+
+    if list["use_target_entity"] ~= nil then
+        list["use_target_entity"] = Utils.StringToBool(list["use_target_entity"])
+    end
+
+    if list["show_grey"] ~= nil then
+        list["show_grey"] = Utils.StringToBool(list["show_grey"])
+    end
+
+    if list["flashing_animation"] ~= nil then
+        list["flashing_animation"] = tonumber(list["flashing_animation"])
     end
 
     return list

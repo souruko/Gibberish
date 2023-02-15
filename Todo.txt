@@ -5,11 +5,6 @@ Fixes
     - make export-strings "nicer"
     - rework countdown
     - add target list to export
-    - add grey to export
-    - add timer/text allignment to export
-    - add animation type to export
-    - add counter value to export
-    - add use use_target_entity to export
     - add multiple timer to the same circel
 
 New Features
