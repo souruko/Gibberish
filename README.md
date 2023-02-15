@@ -10,6 +10,10 @@ Lotro LUA Plugin for all the timers
 
 # ChangeLog
 
+2.8.10
+- Added more Flashing Animations
+- Fixed Border Position and Dotted Border Color 
+
 2.8.9
 - Added new Setting for Flashing Animation Type
 - Fixed Colors for Bar Circel

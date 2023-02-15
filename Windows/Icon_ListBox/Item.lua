@@ -270,13 +270,14 @@ function Item:Update()
 
                     elseif self.data.flashing_animation == ANIMATION_TYPE.Dotted_Border then
 
-                        
                         if self.last_animation < gt then
+
+                            self.grey:SetSize(self:GetSize())
 
                             self.animation:SetSize(32, 32)
                             self.animation:SetBackground(DOTTED_BORDER[self.animation_step])
                             self.animation:SetStretchMode(1)
-                            self.animation:SetSize(self:GetSize())
+                            self.animation:SetSize(self.icon_control:GetSize())
 
                             self.animation_step = self.animation_step + 1
 
@@ -289,12 +290,14 @@ function Item:Update()
 
                     elseif self.data.flashing_animation == ANIMATION_TYPE.Activation_Border then
 
+                        self.grey:SetSize(self:GetSize())
+
                         if self.last_animation < gt then
 
                             self.animation:SetSize(32, 32)
                             self.animation:SetBackground(ACTIVATION_BORDER[self.animation_step])
                             self.animation:SetStretchMode(1)
-                            self.animation:SetSize(self:GetSize())
+                            self.animation:SetSize(self.icon_control:GetSize())
                         
 
                             self.animation_step = self.animation_step + 1
@@ -306,9 +309,53 @@ function Item:Update()
                             self.last_animation = gt + (0.2/self.data.flashing_multi)
                         end
 
+                elseif self.data.flashing_animation == ANIMATION_TYPE.New_Activation_Border then
+
+                    self.grey:SetSize(self:GetSize())
+
+                    if self.last_animation < gt then
+
+
+                        self.animation:SetSize(32, 32)
+                        self.animation:SetBackground(NEW_ACTIVATION_BORDER[self.animation_step])
+                        self.animation:SetStretchMode(1)
+                        self.animation:SetSize(self.icon_control:GetSize())
+                    
+
+                        self.animation_step = self.animation_step + 1
+
+                        if self.animation_step > 12 then
+                            self.animation_step = 1
+                        end
+
+                        self.last_animation = gt + (0.2/self.data.flashing_multi)
                     end
 
-                    self.icon_control:SetOpacity(self.opacity+(self.opacity2-self.opacity)*(1-(time_left/self.data.threshold)))
+                elseif self.data.flashing_animation == ANIMATION_TYPE.New_Dotted_Border then
+
+                    self.grey:SetSize(self:GetSize())
+
+                    if self.last_animation < gt then
+
+
+                        self.animation:SetSize(32, 32)
+                        self.animation:SetBackground(NEW_DOTTED_BORDER[self.animation_step])
+                        self.animation:SetStretchMode(1)
+                        self.animation:SetSize(self.icon_control:GetSize())
+                    
+
+                        self.animation_step = self.animation_step + 1
+
+                        if self.animation_step > 12 then
+                            self.animation_step = 1
+                        end
+
+                        self.last_animation = gt + (0.2/self.data.flashing_multi)
+                    end
+
+                end
+                
+                self.icon_control:SetOpacity(self.opacity+(self.opacity2-self.opacity)*(1-(time_left/self.data.threshold)))
 
 
                 else
@@ -355,6 +402,7 @@ function Item:Build()
     self.grey = Turbine.UI.Control()
     self.grey:SetParent(self)
     self.grey:SetBackColorBlendMode(Turbine.UI.BlendMode.Overlay);
+    self.grey:SetBackColor(Turbine.UI.Color.Black)
     self.grey:SetMouseVisible(false);
     self.grey:SetZOrder(5);
 

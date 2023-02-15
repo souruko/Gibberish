@@ -57,6 +57,9 @@ TRIGGER_TYPE.short[8] = "TT"
 ANIMATION_TYPE[1] = "Blinking"
 ANIMATION_TYPE[2] = "Dotted Border"
 ANIMATION_TYPE[3] = "Activation Border"
+ANIMATION_TYPE[4] = "New Activation Border"
+ANIMATION_TYPE[5] = "New Dotted Border"
+
 
 
 L.reset = "Reset"

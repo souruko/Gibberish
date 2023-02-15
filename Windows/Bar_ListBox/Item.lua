@@ -333,6 +333,45 @@ function Item:Update()
                             self.last_animation = gt + (0.2/self.data.flashing_multi)
                         end
 
+                    elseif self.data.flashing_animation == ANIMATION_TYPE.New_Activation_Border then
+
+                        if self.last_animation < gt then
+
+                            self.animation:SetSize(32, 32)
+                            self.animation:SetBackground(NEW_ACTIVATION_BORDER[self.animation_step])
+                            self.animation:SetStretchMode(1)
+                            self.animation:SetSize(self.frame:GetSize())
+                        
+
+                            self.animation_step = self.animation_step + 1
+
+                            if self.animation_step > 12 then
+                                self.animation_step = 1
+                            end
+
+                            self.last_animation = gt + (0.2/self.data.flashing_multi)
+                        end
+
+                    elseif self.data.flashing_animation == ANIMATION_TYPE.New_Dotted_Border then
+
+                        if self.last_animation < gt then
+
+                            self.animation:SetSize(32, 32)
+                            self.animation:SetBackground(NEW_DOTTED_BORDER[self.animation_step])
+                            self.animation:SetStretchMode(1)
+                            self.animation:SetSize(self.frame:GetSize())
+                        
+
+                            self.animation_step = self.animation_step + 1
+
+                            if self.animation_step > 12 then
+                                self.animation_step = 1
+                            end
+
+                            self.last_animation = gt + (0.2/self.data.flashing_multi)
+                        end
+
+
 
                     end
 

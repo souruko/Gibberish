@@ -1172,15 +1172,15 @@ function WindowSettings:Build()
     self.timer_allignemt_cb = LabelledComboBox(nil, nil, 160)
 	self.timer_allignemt_cb:SetParent(self.background)
     self.timer_allignemt_cb:SetPosition(350 -160, row * row_height)
-	self.timer_allignemt_cb:AddItem("TopLeft", 1);
-	self.timer_allignemt_cb:AddItem("TopCenter", 2);
-	self.timer_allignemt_cb:AddItem("TopRight", 3);
-	self.timer_allignemt_cb:AddItem("MiddleLeft", 4);
-	self.timer_allignemt_cb:AddItem("MiddleCenter", 5);
-	self.timer_allignemt_cb:AddItem("MiddleRight", 6);
-	self.timer_allignemt_cb:AddItem("BottomLeft", 7);
-	self.timer_allignemt_cb:AddItem("BottomCenter", 8);
-	self.timer_allignemt_cb:AddItem("BottomRight", 9);
+	self.timer_allignemt_cb:AddItem("Top Left", 1);
+	self.timer_allignemt_cb:AddItem("Top Center", 2);
+	self.timer_allignemt_cb:AddItem("Top Right", 3);
+	self.timer_allignemt_cb:AddItem("Middle Left", 4);
+	self.timer_allignemt_cb:AddItem("Middle Center", 5);
+	self.timer_allignemt_cb:AddItem("Middle Right", 6);
+	self.timer_allignemt_cb:AddItem("Bottom Left", 7);
+	self.timer_allignemt_cb:AddItem("Bottom Center", 8);
+	self.timer_allignemt_cb:AddItem("Bottom Right", 9);
 
 
 

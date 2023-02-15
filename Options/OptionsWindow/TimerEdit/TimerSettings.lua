@@ -544,9 +544,9 @@ function TimerSettings:Build()
 
     row = row + 1
 
-    self.animation_cb = LabelledComboBox(nil, nil, 160)
+    self.animation_cb = LabelledComboBox(nil, nil, 200)
 	self.animation_cb:SetParent(self.background)
-    self.animation_cb:SetPosition(400 - 170, row * row_height)
+    self.animation_cb:SetPosition(400 - 210, row * row_height)
     for k,v in ipairs(ANIMATION_TYPE) do
         self.animation_cb:AddItem(v, k)
     end

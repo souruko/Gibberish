@@ -58,6 +58,8 @@ TRIGGER_TYPE.short[8] = "TÜ"
 ANIMATION_TYPE[1] = "Blinking"
 ANIMATION_TYPE[2] = "Dotted Border"
 ANIMATION_TYPE[3] = "Activation Border"
+ANIMATION_TYPE[4] = "New One"
+ANIMATION_TYPE[5] = "New Two"
 
 L.reset = "Reset"
 L.reload = "Neu Laden"
