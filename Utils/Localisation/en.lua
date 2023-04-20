@@ -60,7 +60,7 @@ ANIMATION_TYPE[3] = "Activation Border"
 ANIMATION_TYPE[4] = "New Activation Border"
 ANIMATION_TYPE[5] = "New Dotted Border"
 
-
+L.traitline_changed = "You have acquired the Class Specialization Bonus Trait:"
 
 L.reset = "Reset"
 L.reload = "Reload"

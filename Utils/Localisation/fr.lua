@@ -20,6 +20,8 @@ resetPhrases[10] = "has left your Raid."
 resetPhrases[11] = "You leave your Fellowship."
 resetPhrases[12] = "You leave your Raid."
 
+L.traitline_changed = "You have acquired the Class Specialization Bonus Trait:"
+
 LANGUAGE[1] = "English"
 LANGUAGE[2] = "German"
 LANGUAGE[3] = "French"

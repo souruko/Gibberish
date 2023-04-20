@@ -168,7 +168,7 @@ function Turbine.Chat.Received(sender, args)
 
     if args.ChatType == Turbine.ChatType.Advancement then
 
-        local message_begin = string.find(args.Message, "You have acquired the Class Specialization Bonus Trait:");
+        local message_begin = string.find(args.Message, L.traitline_changed);
         
         if message_begin ~= nil then
                           
