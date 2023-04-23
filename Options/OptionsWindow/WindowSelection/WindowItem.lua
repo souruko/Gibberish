@@ -65,14 +65,14 @@ function WindowItem:AddToGroup()
 
         local item = Turbine.UI.MenuItem( data.name , true )
 
-        for i=1, group_items:GetCount(), 1 do
+        for j=1, group_items:GetCount(), 1 do
 
-            local text = group_items:Get(i):GetText()
+            local text = group_items:Get(j):GetText()
 
             if data.name < text then
 
-                group_items:Insert(i, item)
-
+                group_items:Insert(j, item)
+        
                 inserted = true
 
                 break
