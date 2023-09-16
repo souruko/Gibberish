@@ -350,9 +350,10 @@ end
 
 function ParseWindowTimerText(name, timer_data, window_data, target)
     local text_modifier = timer_data.text_modifier
+    local parse_tiers = timer_data.parse_tiers
     local tier = nil
     local text = ""
-    if text_modifier == TEXTMODIFIER.Let_the_plugin_decide or text_modifier == TEXTMODIFIER.Custom_Text then
+    if parse_tiers and (text_modifier == TEXTMODIFIER.Let_the_plugin_decide or text_modifier == TEXTMODIFIER.Custom_Text) then
         local start_tier, end_tier = string.find(name, "%d+") -- check if name has some sort of number / tier
         if start_tier ~= nil then
             tier = string.sub(name, start_tier, end_tier)

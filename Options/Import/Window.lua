@@ -176,6 +176,7 @@ function Window:TimerToString(timer_data, type)
     text = text.."counter_start~="..tostring(timer_data.counter_start)..";\n"
     text = text.."increment~="..tostring(timer_data.increment)..";\n"
     text = text.."use_target_entity~="..tostring(timer_data.use_target_entity)..";\n"
+    text = text.."parse_tiers~="..tostring(timer_data.parse_tiers)..";\n"
     text = text.."show_grey~="..tostring(timer_data.show_grey)..";\n"
     text = text.."flashing_animation~="..tostring(timer_data.flashing_animation)..";\n"
 
@@ -624,6 +625,9 @@ function Window:ConvertTimer(text, window_index, old)
             if timer_info_list["use_target_entity"] ~= nil then
                 savedata[window_index][timer_info_list.type][timer_index].use_target_entity = timer_info_list["use_target_entity"]
             end
+            if timer_info_list["parse_tiers"] ~= nil then
+                savedata[window_index][timer_info_list.type][timer_index].parse_tiers = timer_info_list["parse_tiers"]
+            end
             if timer_info_list["flashing_animation"] ~= nil then
                 savedata[window_index][timer_info_list.type][timer_index].flashing_animation = timer_info_list["flashing_animation"]
             end
@@ -734,6 +738,10 @@ function Window:InterpreteTimer(text, old)
 
     if list["use_target_entity"] ~= nil then
         list["use_target_entity"] = Utils.StringToBool(list["use_target_entity"])
+    end
+
+    if list["parse_tiers"] ~= nil then
+        list["parse_tiers"] = Utils.StringToBool(list["parse_tiers"])
     end
 
     if list["show_grey"] ~= nil then
