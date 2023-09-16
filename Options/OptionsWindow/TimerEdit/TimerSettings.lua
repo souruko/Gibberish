@@ -178,6 +178,7 @@ function TimerSettings:SaveChanges()
     data.increment = self.increment_cb:IsChecked()
     data.show_grey = self.grey_cb:IsChecked()
     data.use_target_entity = self.use_target_entity_cb:IsChecked()
+    data.parse_tiers = self.parse_tiers_cb:IsChecked()
 
     data.target_list = Utils.TargetStringToList( self.target_list_tb:GetText() )
 
@@ -215,6 +216,7 @@ function TimerSettings:ResetColors()
     self.hide_timer_lb:SetForeColor(Turbine.UI.Color.White)
     self.target_list_lb:SetForeColor(Turbine.UI.Color.White)
     self.use_target_entity_lb:SetForeColor(Turbine.UI.Color.White)
+    self.parse_tiers_lb:SetForeColor(Turbine.UI.Color.White)
     self.increment_lb:SetForeColor(Turbine.UI.Color.White)
     self.grey_lb:SetForeColor(Turbine.UI.Color.White)
 
@@ -246,6 +248,7 @@ function TimerSettings:Empty()
     self.removable_cb:SetChecked(false)
     self.hide_timer_cb:SetChecked(false)
     self.use_target_entity_cb:SetChecked(false)
+    self.parse_tiers_cb:SetChecked(false)
     self.increment_cb:SetChecked(false)
     self.grey_cb:SetChecked(false)
     self.hide_timer_cb:SetChecked(false)
@@ -296,6 +299,7 @@ function TimerSettings:FillInformation()
     self.increment_cb:SetChecked(data.increment)
     self.grey_cb:SetChecked(data.show_grey)
     self.use_target_entity_cb:SetChecked(data.use_target_entity)
+    self.parse_tiers_cb:SetChecked(data.parse_tiers)
 
     self.target_list_tb:SetText( Utils.TargetListToString( data.target_list ) )
 
@@ -643,8 +647,30 @@ function TimerSettings:Build()
         self.use_target_entity_lb:SetForeColor(Turbine.UI.Color.Orange)
     end
 
+    row = row + 1
+
+    self.parse_tiers_lb = Turbine.UI.Label()
+    self.parse_tiers_lb:SetParent(self.background)
+    self.parse_tiers_lb:SetFont(OPTIONS_FONT)
+    self.parse_tiers_lb:SetSize(150, row_height)
+    self.parse_tiers_lb:SetPosition(SPACER, row * row_height)
+    self.parse_tiers_lb:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft)
+    self.parse_tiers_lb:SetFontStyle(Turbine.UI.FontStyle.Outline)
+    self.parse_tiers_lb:SetText(L.parse_tiers)
+
+    self.parse_tiers_cb = Turbine.UI.Lotro.CheckBox()
+    self.parse_tiers_cb:SetParent(self.background)
+    self.parse_tiers_cb:SetSize(20, 20)
+    self.parse_tiers_cb:SetFont(OPTIONS_FONT)
+    self.parse_tiers_cb:SetText("")
+    self.parse_tiers_cb:SetPosition(200 - 20, row * row_height)
+    self.parse_tiers_cb:SetChecked()
+    self.parse_tiers_cb.CheckedChanged = function()
+        self.parse_tiers_lb:SetForeColor(Turbine.UI.Color.Orange)
+    end
+
     local collumn2 = 210
-    row = row - 3
+    row = row - 4
 
     self.use_regex_lb = Turbine.UI.Label()
     self.use_regex_lb:SetParent(self.background)
